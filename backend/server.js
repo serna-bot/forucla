@@ -44,44 +44,43 @@ app.get("/get-posts", (req, res) => {
   async function process(posts) {
     res.send(JSON.stringify({posts: posts}));
   }
-  getDbCollection()
+  getDbCollection({}, "posts", process)
 });
 
-app.post("/set-posts", (req, res) => {
+app.post("/set-posts", (req, res) => { //
   data = req.body;
   insertDb(data, "posts");
   res.send({status : 200});;
 });
 
+// //data for the individual posts, title, text
+// app.get("/get-title", (req, res) => {
+//   const posts = [];
+//   async function process(title) {
+//     res.send(JSON.stringify({title: title}));
+//   }
+//   getDbCollection({name : req.query.name}, "title", process)
+// });
 
-//data for the individual posts, title, text
-app.get("/get-title", (req, res) => {
-  const posts = [];
-  async function process(title) {
-    res.send(JSON.stringify({title: title}));
-  }
-  getDbCollection({name : req.query.name}, "title", process)
-});
+// app.post("/set-title", (req, res) => { //title of the post
+//   data = req.body;
+//   insertDb(data, "title");
+//   res.send({status : 200});;
+// });
 
-app.post("/set-title", (req, res) => {
-  data = req.body;
-  insertDb(data, "title");
-  res.send({status : 200});;
-});
+// app.get("/get-text", (req, res) => {
+//   const posts = [];
+//   async function process(text) {
+//     res.send(JSON.stringify({text: text}));
+//   }
+//   getDbCollection({name : req.query.name}, "text", process)
+// });
 
-app.get("/get-text", (req, res) => {
-  const posts = [];
-  async function process(text) {
-    res.send(JSON.stringify({text: text}));
-  }
-  getDbCollection({name : req.query.name}, "text", process)
-});
-
-app.post("/set-text", (req, res) => {
-  data = req.body;
-  insertDb(data, "text");
-  res.send({status : 200});;
-});
+// app.post("/set-text", (req, res) => { //actual text of the pot
+//   data = req.body;
+//   insertDb(data, "text");
+//   res.send({status : 200});;
+// });
 
 // app.put("/posts/:id", (req, res) => {
 //   const { id } = req.params;
