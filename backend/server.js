@@ -1,7 +1,6 @@
 express = require("express");
 const cookieParser = require("cookie-parser");
 const app = express();
-const bodyParser = require('body-parser');
 const cors = require("cors");
 
 require("dotenv").config({ path: "./config.env" });
@@ -19,7 +18,6 @@ app.use(
 
 app.use(cookieParser());
 app.use(express.json());
-app.use(bodyParser.json());
 
 var db = require("./mongo.js");
 
@@ -40,22 +38,56 @@ function getDbCollection (item, col, process) {
   db.collection(col).find(item).toArray().then(process);
 }
 
-app.get("/posts", (req, res) => {
+//collection of all the posts
+app.get("/get-posts", (req, res) => {
   const posts = [];
-  res.send("ur mom");
-  // res.json(posts);
+  async function process(posts) {
+    res.send(JSON.stringify({posts: posts}));
+  }
+  getDbCollection()
 });
 
-// app.post("/posts", (req, res) => {
-//   //TODO: code to add new post
+app.post("/set-posts", (req, res) => {
+  data = req.body;
+  insertDb(data, "posts");
+  res.send({status : 200});;
+});
+
+
+//data for the individual posts, title, text
+app.get("/get-title", (req, res) => {
+  const posts = [];
+  async function process(title) {
+    res.send(JSON.stringify({title: title}));
+  }
+  getDbCollection({name : req.query.name}, "title", process)
+});
+
+app.post("/set-title", (req, res) => {
+  data = req.body;
+  insertDb(data, "title");
+  res.send({status : 200});;
+});
+
+app.get("/get-text", (req, res) => {
+  const posts = [];
+  async function process(text) {
+    res.send(JSON.stringify({text: text}));
+  }
+  getDbCollection({name : req.query.name}, "text", process)
+});
+
+app.post("/set-text", (req, res) => {
+  data = req.body;
+  insertDb(data, "text");
+  res.send({status : 200});;
+});
+
+// app.put("/posts/:id", (req, res) => {
+//   const { id } = req.params;
+//   //TODO: code to update posts
 //   res.json(req.body);
 // });
-
-app.put("/posts/:id", (req, res) => {
-  const { id } = req.params;
-  //TODO: code to update posts
-  res.json(req.body);
-});
 
 // app.delete("/posts/:id", (req, res) => {
 //   const { id } = req.params;
