@@ -1,0 +1,11 @@
+@use "../../_var.scss" as var;
+
+.post-indiv-container {
+    display: flex;
+    flex-flow: column;
+    width: 413px;
+    box-sizing: border-box;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    margin-top: 75px;
+
+} //TODO

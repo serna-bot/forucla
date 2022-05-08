@@ -8,6 +8,7 @@ import ReactDOM from "react-dom";
 import "./index.scss";
 import Homepage from "./Homepage";
 import Posts from "./Posts";
+import Header from "./shared/Header";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
@@ -15,7 +16,7 @@ ReactDOM.render(
     <Header />
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={ <Homepage /> } />
+        {/* <Route path="/" element={ <Homepage /> } /> */}
         <Route path="/review" element={ <Posts /> } />
       </Routes>
     </BrowserRouter>
