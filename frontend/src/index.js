@@ -9,15 +9,21 @@ import "./index.scss";
 import Homepage from "./Homepage";
 import Posts from "./Posts";
 import Header from "./shared/Header";
+import App from './App';
 import reportWebVitals from "./reportWebVitals";
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById('root'));
+  root.render(
+    // <React.StrictMode>
+    //   <App />
+    // </React.StrictMode>
   <React.StrictMode>
-    <Header />
+    {/* <Header /> */}
     <BrowserRouter>
-      <Routes>
-        {/* <Route path="/" element={ <Homepage /> } /> */}
-        <Route path="/review" element={ <Posts /> } />
+    <Routes>
+        {/* <Route path="/" element={ <App /> } /> */}
+        <Route path="/" element={ <Posts /> } />
+        {/* <Route path="/review" element={ <Post /> } /> */}
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,

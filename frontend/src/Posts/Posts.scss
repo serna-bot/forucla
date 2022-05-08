@@ -1,1 +1,21 @@
 @use "../_var.scss" as var;
+
+#post-title {
+    display: flex;
+    h1 {
+        display: inline-block;
+        width: max-content;
+        margin: 0;
+        font-size: medium;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-weight: bold;
+        color: aquamarine;
+    }
+}
+
+#indiv-posts {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    
+}

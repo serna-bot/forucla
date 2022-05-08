@@ -5,7 +5,14 @@
     flex-flow: column;
     width: 413px;
     box-sizing: border-box;
-    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-family: "Comic Sans MS", "Comic Sans", cursive; //im begging you please change the font later
     margin-top: 75px;
 
-} //TODO
+}
+
+.post-descript {
+    p {
+        font-size: 12;
+        font-family: "Comic Sans MS", "Comic Sans", cursive;
+    }
+}
