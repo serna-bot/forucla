@@ -8,6 +8,7 @@ import ReactDOM from "react-dom";
 import "./index.scss";
 import Homepage from "./Homepage";
 import Posts from "./Posts";
+import Submit from "./Submit"
 import Header from "./shared/Header";
 import App from './App';
 import reportWebVitals from "./reportWebVitals";
@@ -22,7 +23,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
     <BrowserRouter>
     <Routes>
         {/* <Route path="/" element={ <App /> } /> */}
-        <Route path="/" element={ <Posts /> } />
+        <Route path="/" element={ <Homepage /> } />
+        <Route path="/home" element={ <Posts /> } />
+        <Route path="/submit" element={ <Submit /> } />
         {/* <Route path="/review" element={ <Post /> } /> */}
       </Routes>
     </BrowserRouter>
