@@ -1,12 +1,19 @@
-express = require("express");
-const cookieParser = require("cookie-parser");
+import express from 'express';
+import bodyParser from 'body-parser';
+import mongoose from 'mongoose';
+import cors from 'cors';
+
+import db from "./mongo.js";
+
+// require("dotenv").config({ path: "./config.env" });
+
 const app = express();
-const cors = require("cors");
 
-require("dotenv").config({ path: "./config.env" });
+app.use(bodyParser.json({ limit: "30mb" }))
+app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }))
+app.use(express.json());
 
-const axios = require("axios");
-const ObjectID = require('mongodb').ObjectID;
+// const ObjectID = require('mongodb').ObjectID;
 
 const port = process.env.PORT || 4000;
 app.use(
@@ -16,19 +23,16 @@ app.use(
   })
 );
 
-app.use(cookieParser());
-app.use(express.json());
+const CONNECTION_URL = '';
 
-var db = require("./mongo.js");
-
-const { MinKey } = require("mongodb");
+// const { MinKey } = require("mongodb");
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
 
 function insertDb(item, col) {
-  var tempDbCollection = db.collection(col);
+  let tempDbCollection = db.collection(col);
   tempDbCollection.insertOne(item, function (err, res) {
       if (err) console.log(err);
   });
@@ -48,7 +52,7 @@ app.get("/get-posts", (req, res) => {
 });
 
 app.post("/set-posts", (req, res) => { //
-  data = req.body;
+  let data = req.body;
   insertDb(data, "posts");
   res.send({status : 200});;
 });

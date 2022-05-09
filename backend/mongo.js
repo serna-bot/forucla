@@ -1,4 +1,6 @@
-const MongoClient  = require('mongodb').MongoClient;
+import mongodb from 'mongodb';
+
+const MongoClient  = mongodb.MongoClient;
 const url = "mongodb://localhost:27017";
 
 const conn = new MongoClient(url, {
@@ -8,10 +10,10 @@ const conn = new MongoClient(url, {
 conn.connect((err, db) => {
   if (err) {
     console.log(err);
-  }
-  else {
+  } else {
     console.log("Connected to db");
   }
 });
-module.exports = conn.db('test');
+
+export default conn.db('test');
 	       
