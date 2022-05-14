@@ -2,7 +2,6 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 import express from 'express';
 import bodyParser from 'body-parser';
-import mongoose from 'mongoose';
 import cors from 'cors';
 
 import db from "./mongo.js";
@@ -26,7 +25,7 @@ app.use(
 
 const CONNECTION_URL = '';
 
-// const { MinKey } = require("mongodb");
+const { MinKey } = require("mongodb");
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
