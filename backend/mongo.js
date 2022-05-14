@@ -14,4 +14,3 @@ conn.connect((err, db) => {
   }
 });
 module.exports = conn.db('test');
-	       
