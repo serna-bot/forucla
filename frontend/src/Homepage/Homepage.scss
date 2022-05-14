@@ -1,2 +1,12 @@
 @use "../_var.scss" as var;
 
+#home-mes {
+    display: flow;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+        font-size:30px; 
+        font-family: "Comic Sans MS", "Comic Sans", cursive;
+    }
+}

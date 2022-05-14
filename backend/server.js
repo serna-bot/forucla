@@ -1,11 +1,11 @@
-express = require("express");
+const express = require("express");
 const cookieParser = require("cookie-parser");
 const app = express();
 const cors = require("cors");
 
 require("dotenv").config({ path: "./config.env" });
 
-const axios = require("axios");
+// const axios = require("axios");
 const ObjectID = require('mongodb').ObjectID;
 
 const port = process.env.PORT || 4000;
@@ -51,6 +51,33 @@ app.post("/set-posts", (req, res) => { //
   data = req.body;
   insertDb(data, "posts");
   res.send({status : 200});;
+});
+
+app.post("/login", async (req, res) => {
+  const {OAuth2Client} = require('google-auth-library');
+  const CLIENT_ID = "661398999303-0to1gmb9v5im56fjttr6v3ab7l774651.apps.googleusercontent.com"
+  const client = new OAuth2Client(CLIENT_ID);
+  const { token }  = req.body
+  const ticket = await client.verifyIdToken({
+      idToken: token,
+      audience: process.env.CLIENT_ID
+  });
+    
+  const {name, email} = ticket.getPayload();  
+  if (email.substr(-10, 10) === "g.ucla.edu") {
+    const user = await db.insert({ 
+      email: email,
+      name: name,
+    }, "userProfile");
+    req.session.userId = user.id;
+    res.status(201);
+    res.json(user);
+    res.cookie("token", token, {maxAge: 3600000});
+    console.log ("cookie set: " + token);
+  }
+  else {
+    res.status(400)
+  }
 });
 
 // //data for the individual posts, title, text
