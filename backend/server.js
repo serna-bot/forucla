@@ -12,6 +12,8 @@ require("dotenv").config({ path: "./config.env" });
 // app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }))
 app.use(express.json());
 
+const { google } = require("googleapis");
+
 // const axios = require("axios");
 const ObjectID = require('mongodb').ObjectID;
 
@@ -57,33 +59,85 @@ app.post("/set-posts", (req, res) => { //
   res.send({status : 200});;
 });
 
-app.post("/login", async (req, res) => {
-  const {OAuth2Client} = require('google-auth-library');
-  const CLIENT_ID = "661398999303-avkfe6v1tr5dnlfts8odpb04eo64fbq3.apps.googleusercontent.com";
-  const client = new OAuth2Client(CLIENT_ID);
-  const { token }  = req.body;
-  console.log(req.body);
-  const ticket = await client.verifyIdToken({
-      idToken: token,
-      audience: process.env.CLIENT_ID
-  }).catch((error) => {
-    console.error(error);
+
+const oauth2Client = new google.auth.OAuth2(
+  "661398999303-avkfe6v1tr5dnlfts8odpb04eo64fbq3.apps.googleusercontent.com",
+  "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",
+  "http://localhost:4000/handleGoogleRedirect" // server redirect url handler
+);
+
+app.post("/login", cors(), (req, res) => {
+  const url = oauth2Client.generateAuthUrl({
+    access_type: "offline",
+    scope: [
+      "https://www.googleapis.com/auth/userinfo.email",
+    ],
+    prompt: "consent",
   });
-  console.log("dog");
-  const {name, email} = ticket.getPayload();  
-  if (email.substr(-10, 10) === "g.ucla.edu") {
-    const user = await db.insert({ 
-      email: email,
-      name: name,
-    }, "userProfile");
-    req.session.userId = user.id;
-    res.status(201);
-    res.json(user);
-    res.cookie("token", token, {maxAge: 3600000});
-    console.log ("cookie set: " + token);
+  res.send({url});
+  // const client = new OAuth2Client(CLIENT_ID);
+  // let { token }  = req.body;
+  // console.log(req);
+  // const ticket = await client.verifyIdToken({
+  //     idToken: token,
+  //     audience: CLIENT_ID
+  // }).catch((error) => {
+  //   console.error(error);
+  // });
+  // console.log("dog");
+  // const {name, email} = ticket.getPayload();  
+  // if (email.substr(-10, 10) === "g.ucla.edu") {
+  //   req.session.userId = user.id;
+  //   res.status(201);
+  //   res.json(user);
+  //   res.cookie("token", token, {maxAge: 3600000});
+  //   console.log ("cookie set: " + token);
+  // }
+  // else {
+  //   res.status(400)
+  // }
+});
+
+app.get("/handleGoogleRedirect", async (req, res) => {
+  const code = req.query.code;
+  console.log("code: ", code);
+  oauth2Client.getToken(code, (err, tokens) => {
+    if (err) {
+      console.log("fuck shit");
+      throw new Error("Issue with login", err.message);
+    }
+    const accessToken = tokens.access_token;
+    const refreshToken = tokens.refresh_token;
+    res.redirect(
+      `http://localhost:3000?accessToken=${accessToken}&refreshToken=${refreshToken}`
+    );
+  });
+});
+
+app.post("/getValidToken", async (req, res) => {
+  try {
+    const request = await fetch("https://www.googleapis.com/oauth2/v4/token", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        client_id: "661398999303-avkfe6v1tr5dnlfts8odpb04eo64fbq3.apps.googleusercontent.com",
+        client_secret: "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",
+        refreshToken: req.body.refreshToken,
+        grant_type: "refresh_token",
+      }),
+    });
+
+    const data = await request.json();
+    console.log("stupid ass", data.access_token);
+
+    res.json( {
+      accessToken: data.access_token,
+    });
   }
-  else {
-    res.status(400)
+  catch(error) {
+    res.json({error: error.message});
   }
 });
 
