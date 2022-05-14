@@ -24,7 +24,12 @@ function Homepage() {
     //         }
     //     } 
     // }
+    const fail = async (data) => {
+      console.log("Oh no: ");
+      console.log(data);
+    }
     const handleLogin = async googleData => {
+      console.log(googleData);
         const res = await fetch("http://localhost:4000/login", {
           method: "POST",
           headers: {
@@ -37,19 +42,20 @@ function Homepage() {
         }).catch((error) => {
           console.error(error);
         })
+        console.log("poop");
         if (googleData.tokenId != undefined) {
           console.log(googleData.tokenId);
         }
-        console.log("fuck shit");
+       
         let response = await res.json()
+        
         if (response.logged) {
           window.location.reload(false);
         }
     }
-    useEffect(() => {
-      
-      handleLogin()
-    });
+    // useEffect(() => {
+    //   handleLogin(googleData.tokenId);
+    // });
     return (
         <div className="home-mes"> 
             <h1>The forum for UCLA students and only UCLA students.</h1>
@@ -58,12 +64,12 @@ function Homepage() {
               <div>
                 <div> 
                   <GoogleLogin
-                      clientId="661398999303-0to1gmb9v5im56fjttr6v3ab7l774651.apps.googleusercontent.com"
+                      clientId="661398999303-avkfe6v1tr5dnlfts8odpb04eo64fbq3.apps.googleusercontent.com"
                       buttonText="Log in with your UCLA Google Account"
                       onSuccess={handleLogin}
-                      onFailure={handleLogin}
+                      onFailure={fail}
                       cookiePolicy={'single_host_origin'}
-                  />
+                  ></GoogleLogin>
                 </div>
               </div>
               : <div> ur mom</div>}

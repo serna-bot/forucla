@@ -1,15 +1,15 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
-import express from 'express';
-import bodyParser from 'body-parser';
-import cors from 'cors';
+// import bodyParser from 'body-parser';
+const cors = require("cors");
+const app = express();
 
-import db from "./mongo.js";
+const db = require("./mongo.js");
 
-// require("dotenv").config({ path: "./config.env" });
+require("dotenv").config({ path: "./config.env" });
 
-app.use(bodyParser.json({ limit: "30mb" }))
-app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }))
+// app.use(bodyParser.json({ limit: "30mb" }))
+// app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }))
 app.use(express.json());
 
 // const axios = require("axios");
@@ -59,14 +59,17 @@ app.post("/set-posts", (req, res) => { //
 
 app.post("/login", async (req, res) => {
   const {OAuth2Client} = require('google-auth-library');
-  const CLIENT_ID = "661398999303-0to1gmb9v5im56fjttr6v3ab7l774651.apps.googleusercontent.com"
+  const CLIENT_ID = "661398999303-avkfe6v1tr5dnlfts8odpb04eo64fbq3.apps.googleusercontent.com";
   const client = new OAuth2Client(CLIENT_ID);
-  const { token }  = req.body
+  const { token }  = req.body;
+  console.log(req.body);
   const ticket = await client.verifyIdToken({
       idToken: token,
       audience: process.env.CLIENT_ID
+  }).catch((error) => {
+    console.error(error);
   });
-    
+  console.log("dog");
   const {name, email} = ticket.getPayload();  
   if (email.substr(-10, 10) === "g.ucla.edu") {
     const user = await db.insert({ 
