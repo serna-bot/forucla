@@ -7,14 +7,14 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
+/* @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
+} */
 
 .App-header {
-  background-color: #282c34;
+  background-color: #507fde;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -36,3 +36,46 @@
     transform: rotate(360deg);
   }
 }
+#startButton {
+  text-decoration: none;
+  font-weight: 300;
+  font-size: 1.7em;
+  color: #caa5f7;
+  background-color: transparent;
+  border: 2px solid #caa5f7;
+  padding: 0.2em 0.6em;
+  margin-top: 50px;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: all ease-in-out 0.2s;
+}
+#startButton:hover {
+  background-color: #caa5f7;
+  color: black;
+}
+
+/* Start of code from particles.js (https://www.geeksforgeeks.org/how-to-use-particle-js-in-javascript-project/) */
+.heading {
+  position: absolute;
+  text-align: center;
+  top: 20%;
+  width: 100%;
+}
+.heading h1 {
+  color: white;
+  font-size: 100px;
+  margin-bottom: 10px;
+}
+.heading h3 {
+  color: white;
+  font-weight: lighter;
+  font-style: italic;
+  font-size: 30px;
+}
+#particles-js {
+  background: black;
+  height: 100vh;
+}
+
+/* End of code from particles.js */
