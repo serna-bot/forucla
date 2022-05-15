@@ -1,6 +1,8 @@
 {
   "name": "backend",
   "version": "0.1.0",
+  "main": "server.js",
+  "type": "module",
   "private": true,
   "dependencies": {
     "@testing-library/react": "^13.1.1",
