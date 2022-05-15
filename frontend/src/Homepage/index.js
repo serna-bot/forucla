@@ -7,7 +7,7 @@ import "./Homepage.scss";
 import { setTokens } from "./token";
 import { getEmail } from "./email.js";
 
-// let client_id = "454105536452-d65nbgs30tvjn7gidu1tnkrjhiod19c8.apps.googleusercontent.com;
+let client_id = "454105536452-d65nbgs30tvjn7gidu1tnkrjhiod19c8.apps.googleusercontent.com";
 // let scopes = "https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email";
 
 function Homepage() {
@@ -15,12 +15,12 @@ function Homepage() {
     handleTokens();
   }, []);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [email, settingEmail] = useState("");
   const fail = async (data) => {
     console.log("Oh no: ");
     console.log(data);
   }
   const handleLogin = async () => {
-    console.log("shit");
     try {
       const res = await fetch("http://localhost:4000/login", { 
       method: "POST",
@@ -33,17 +33,20 @@ function Homepage() {
       console.log("eerroro", error);
       throw new Error("Issue with Login", error.message);
     }
-    
+    // console.log(data);
   };
 
   const handleTokens = () => {
     const query = new URLSearchParams(window.location.search);
     const accessToken = query.get("accessToken");
+    console.log(query.get("accessToken"));
     const refreshToken = query.get("refreshToken");
     const expirationDate = newExpirationDate();
     if (accessToken && refreshToken) {
       storeToken(accessToken, refreshToken, expirationDate);
       setIsLoggedIn(true);
+      // const gettingEmail = await getEmail();
+      // settingEmail(gettingEmail);
       console.log("Logged in");
     }
   };
@@ -58,19 +61,19 @@ function Homepage() {
     sessionStorage.setItem("accessToken", token);
     sessionStorage.setItem("refreshToken", refreshToken);
     sessionStorage.setItem("expirationDate", expirationDate);
-    console.log("storing token");
+    console.log("storing token", sessionStorage.getItem("accessToken"));
   };
 
   const signOut = () => {
     setIsLoggedIn(false);
     sessionStorage.clear();
     console.log("signed out");
+    window.location.href = `http://localhost:3000`
   };
 
-  
 
   return (
-    <GoogleOAuthProvider clientId="661398999303-avkfe6v1tr5dnlfts8odpb04eo64fbq3.apps.googleusercontent.com">
+    <GoogleOAuthProvider clientId= {client_id}>
       <div className="home-mes"> 
           <h1>The forum for UCLA students and only UCLA students.</h1>
           <div id="login-mes">
@@ -78,7 +81,7 @@ function Homepage() {
             <div>
               <div> 
                 <GoogleLogin
-                    clientId="661398999303-avkfe6v1tr5dnlfts8odpb04eo64fbq3.apps.googleusercontent.com"
+                    clientId={client_id}
                     buttonText="Log in with your UCLA Google Account"
                     onSuccess={handleLogin}
                     onFailure={fail}

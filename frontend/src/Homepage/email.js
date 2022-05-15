@@ -2,12 +2,13 @@ import { getToken } from "./token";
 
 export const getEmail = async ()=> {
     try {
-        const token = getToken();
+        const token = await getToken();
         console.log( 
             "getting email with token", token
         );
+        const link = "https://www.googleapis.com/oauth2/v3/userinfo?access_token=" + token;
         const request = await fetch(
-            `https://www.googleapis.com/oauth2/v1/userinfo?alt=json`,
+            link,
             {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -15,8 +16,11 @@ export const getEmail = async ()=> {
             }
         );
         const data = await request.json();
-        console.log("fuck you", data);
-        return data;
+        if (!data.hasOwnProperty("error")) {
+            console.log("fuck you", data.email);
+            return (data.email);
+        }
+        return "error";
     }
     catch (error) {
         console.log("can't get the shit", error);
