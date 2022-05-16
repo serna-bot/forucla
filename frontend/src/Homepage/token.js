@@ -1,7 +1,7 @@
 export const getToken = async () => {
     if (tokenExpired()) {
         const refreshToken = sessionStorage.getItem("refreshToken");
-        const token = await gettingTokenFromServer(refreshToken);
+        const token = await getValidToken(refreshToken);
         sessionStorage.setItem("accessToken", token.accessToken);
         sessionStorage.setItem("expirationDate", newExpirationDate());
         return token.accessToken;
@@ -28,7 +28,7 @@ const tokenExpired = () => {
     }
     return false;
 }
-const gettingTokenFromServer = async (refreshToken) => {
+const gettingTokenFromServer = async () => {
     try {
         const request = await fetch("/getValidToken", {
             method: "POST",
