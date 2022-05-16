@@ -1,65 +1,39 @@
-const express = require("express");
-const cookieParser = require("cookie-parser");
-// import bodyParser from 'body-parser';
-const cors = require("cors");
+import express from 'express';
+import bodyParser from 'body-parser';
+// import cookieParser from 'cookie-parser';
+import mongoose from 'mongoose';
+import cors from 'cors';
+
+import postRoutes from './routes/posts.js';
+
+import { google } from 'googleapis';
+
+import apiKey from "./googlesso.json";
+
 const app = express();
 
-const db = require("./mongo.js");
-
-require("dotenv").config({ path: "./config.env" });
-
-// app.use(bodyParser.json({ limit: "30mb" }))
-// app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }))
-app.use(express.json());
-
-const { google } = require("googleapis");
-
-// const axios = require("axios");
-const ObjectID = require('mongodb').ObjectID;
-
-const port = process.env.PORT || 4000;
-app.use(
-  cors({
+app.use(bodyParser.json({ limit: "30mb" }));
+app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
+app.use(cors(
+  {
     origin: "http://localhost:3000",
     credentials: true,
-  })
-);
-
-const CONNECTION_URL = '';
-
-const { MinKey } = require("mongodb");
-
-app.listen(port, () => {
-  console.log(`Server is running on port: ${port}`);
-});
-
-function insertDb(item, col) {
-  let tempDbCollection = db.collection(col);
-  tempDbCollection.insertOne(item, function (err, res) {
-      if (err) console.log(err);
-  });
-}
-
-function getDbCollection (item, col, process) {
-  db.collection(col).find(item).toArray().then(process);
-}
-
-//collection of all the posts
-app.get("/get-posts", (req, res) => {
-  const posts = [];
-  async function process(posts) {
-    res.send(JSON.stringify({posts: posts}));
   }
-  getDbCollection({}, "posts", process)
-});
+));
 
-app.post("/set-posts", (req, res) => { //
-  let data = req.body;
-  insertDb(data, "posts");
-  res.send({status : 200});;
-});
+app.use('/posts', postRoutes);
 
-let {clientId, clientSecret} = require("./googlesso.json");
+const CONNECTION_URL = "mongodb://localhost:27017";
+const PORT = process.env.port || 4000;
+
+mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => app.listen(PORT, () => { console.log(`Server running on port: ${PORT}`)}))
+  .catch((error) => console.log(error.message));
+
+
+const clientId = apiKey.clientId;
+const clientSecret = apiKey.clientSecret;
+
 const oauth2Client = new google.auth.OAuth2(
   clientId,
   clientSecret,
