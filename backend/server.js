@@ -8,11 +8,11 @@ import postRoutes from './routes/posts.js'
 
 const app = express();
 
-app.use('/posts', postRoutes);
-
 app.use(bodyParser.json({ limit: "30mb" }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
+
+app.use('/posts', postRoutes);
 
 const CONNECTION_URL = "mongodb://localhost:27017";
 const PORT = process.env.port || 4000;
@@ -21,42 +21,6 @@ mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: tr
   .then(() => app.listen(PORT, () => { console.log(`Server running on port: ${PORT}`)}))
   .catch((error) => console.log(error.message));
 
-// mongoose.set('useFindAndModify', false);
-
-
-// const db = require("./mongo.js");
-// app.use(express.json());
-// require("dotenv").config({ path: "./config.env" });
-
-// const { google } = require("googleapis");
-
-// const ObjectID = require('mongodb').ObjectID;
-
-// function insertDb(item, col) {
-//   let tempDbCollection = db.collection(col);
-//   tempDbCollection.insertOne(item, function (err, res) {
-//       if (err) console.log(err);
-//   });
-// }
-
-// function getDbCollection (item, col, process) {
-//   db.collection(col).find(item).toArray().then(process);
-// }
-
-// //collection of all the posts
-// app.get("/get-posts", (req, res) => {
-//   const posts = [];
-//   async function process(posts) {
-//     res.send(JSON.stringify({posts: posts}));
-//   }
-//   getDbCollection({}, "posts", process)
-// });
-
-// app.post("/set-posts", (req, res) => { //
-//   let data = req.body;
-//   insertDb(data, "posts");
-//   res.send({status : 200});;
-// });
 
 // let {clientId, clientSecret} = require("./googlesso.json");
 // const oauth2Client = new google.auth.OAuth2(
