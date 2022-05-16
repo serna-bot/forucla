@@ -1,12 +1,21 @@
+import React from 'react';
+import Select from 'react-select';
 import { useEffect, useState } from "react";
 import "./Submit.scss";
+import {getCategories} from "../shared/categories.js"
 
 function Submit() {
     const [title, setTitle] = useState();
     const [desc, setDesc] = useState();
+    const [chosenCategory, setCategory] = useState();
+    const categories = getCategories();
     useEffect(() => {
         //TODO
     }, []);
+
+    const handleDropdownChange = (chosenCategory) => {
+        setCategory(chosenCategory.value);
+    };
 
     async function submitPost() {
         let request = await fetch("http://localhost:4000/set-posts", {
@@ -18,6 +27,7 @@ function Submit() {
             body: JSON.stringify ({
                 title: title,
                 desc: desc,
+                category: chosenCategory,
             }),
         })
         .catch((error) => {
@@ -26,7 +36,7 @@ function Submit() {
         let response = await request.json();
         console.log("Posted!");
         console.log(response);
-        window.location.href = `/home`
+        window.location.href = `/posts`
     }
     return (
         <div id="submit-page" className="App">
@@ -47,6 +57,13 @@ function Submit() {
                     onChange={(e) => setDesc(e.target.value)}
                 ></textarea>
             </div>
+            <Select
+                // chosenCategory={chosenCategory}
+                options={categories}
+                openMenuOnClick={false}
+                placeholder="You Must Choose a Category"
+                onChange={handleDropdownChange}
+            />
             <button id="submit-button" type="submit" onClick={submitPost}>Submit</button>
         </div>
     );

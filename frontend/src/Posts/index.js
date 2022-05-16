@@ -3,7 +3,6 @@ import "./Posts.scss";
 import IndivPosts from "./IndivPosts";
 
 function Posts() {
-
     let [posts, setPosts] = useState(undefined);
     let username = sessionStorage.getItem("username");
     async function getPosts() {
@@ -43,6 +42,7 @@ function Posts() {
                             _id = {currVal._id}
                             title = {currVal.title}
                             desc = {currVal.desc}
+                            category = {currVal.category}
                         />
                     )})
                 }
