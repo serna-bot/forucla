@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
-// import GoogleLogin from "react-google-login";
 import { GoogleLogin } from '@react-oauth/google';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import "./Homepage.scss";
@@ -8,7 +7,6 @@ import { setTokens } from "./token";
 import { getEmail } from "./email.js";
 
 let client_id = "454105536452-d65nbgs30tvjn7gidu1tnkrjhiod19c8.apps.googleusercontent.com";
-// let scopes = "https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email";
 
 function Homepage() {
   useEffect(() => {
