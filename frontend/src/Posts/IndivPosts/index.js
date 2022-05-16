@@ -53,6 +53,7 @@ function IndivPosts (props) {
                             <h2>{props.title}</h2>
                         </div>
                         <p> {props.desc}</p>
+                        <p> {props.category}</p>
                     </div>
                 </div>
             </div> 

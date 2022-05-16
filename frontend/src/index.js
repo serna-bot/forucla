@@ -19,12 +19,12 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
     //   <App />
     // </React.StrictMode>
   <React.StrictMode>
-    {/* <Header /> */}
+    <Header />
     <BrowserRouter>
     <Routes>
         {/* <Route path="/" element={ <App /> } /> */}
         <Route path="/" element={ <Homepage /> } />
-        <Route path="/home" element={ <Posts /> } />
+        <Route path="/posts" element={ <Posts /> } />
         <Route path="/submit" element={ <Submit /> } />
         {/* <Route path="/review" element={ <Post /> } /> */}
       </Routes>

@@ -46,7 +46,7 @@ app.get("/handleGoogleRedirect", async (req, res) => {
   console.log("code: ", code);
   oauth2Client.getToken(code, (err, tokens) => {
     if (err) {
-      console.log("fuck shit");
+      console.log("handleGoogleRedirect Error:");
       throw new Error("Issue with login", err.message);
     }
     const accessToken = tokens.access_token;
@@ -73,7 +73,7 @@ app.post("/getValidToken", async (req, res) => {
     });
 
     const data = await request.json();
-    console.log("stupid ass", data.access_token);
+    console.log("Access token from getValidToken:", data.access_token);
 
     res.json( {
       accessToken: data.access_token,
@@ -84,3 +84,23 @@ app.post("/getValidToken", async (req, res) => {
   }
 });
 
+// function findPost(search, posts, n) {
+  
+//   const searchResults = new Set();
+ 
+// }
+
+// app.get("/search-post", async (req, res) => {
+//   const searchQuery = new Set();
+//   const allPosts = [];
+//   async function process(allPosts) {
+//     res.send(JSON.stringify({posts: allPosts}));
+//   }
+//   getDbCollection({}, "posts", process);
+//   allPosts.forEach(indivPost => {
+//     if (indivPost.category.includes()) {
+//       searchQuery.add(indivPost);
+//       console.log(indivPost);
+//     }
+//   });
+// });

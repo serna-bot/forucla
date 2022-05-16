@@ -3,9 +3,8 @@ import "./Posts.scss";
 import IndivPosts from "./IndivPosts";
 
 function Posts() {
-
     let [posts, setPosts] = useState(undefined);
-    // let [name, setName] = useState(undefined);
+    let username = sessionStorage.getItem("username");
     async function getPosts() {
         console.log("i've been called");
         let request = await fetch("http://localhost:4000/get-posts", {
@@ -33,7 +32,7 @@ function Posts() {
     return (
         <div className="Posts">
             <div id="post-title">
-                <h1>ur mom <span>lmao</span></h1>
+                <h1>{username}</h1>
             </div>    
             <div id="indiv-posts"> 
                 {posts === undefined ?
@@ -43,6 +42,7 @@ function Posts() {
                             _id = {currVal._id}
                             title = {currVal.title}
                             desc = {currVal.desc}
+                            category = {currVal.category}
                         />
                     )})
                 }
