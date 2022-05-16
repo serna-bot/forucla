@@ -1,4 +1,4 @@
-import logo from './oonga_boonga.png';
+import logo from './logo.svg';
 import './App.css';
 
 function App() {
@@ -18,9 +18,6 @@ function App() {
           Learn React
         </a>
       </header>
-
-      particlesJS.load('particles-js', 'assets/particles.json', function() {
-      console.log('callback - particles.js config loaded')});
     </div>
   );
 }

@@ -73,32 +73,30 @@ function Homepage() {
 
 
   return (
-    <><GoogleOAuthProvider clientId={client_id}>
-      <div className="home-mes">
-        <h1>The forum for UCLA students and only UCLA students.</h1>
-        <div id="login-mes">
-          {!isLoggedIn ?
+    <GoogleOAuthProvider clientId= {client_id}>
+      <div className="home-mes"> 
+          <h1>The forum for UCLA students and only UCLA students.</h1>
+          <div id="login-mes">
+          { !isLoggedIn ? 
             <div>
-              <div>
+              <div> 
                 <GoogleLogin
-                  clientId={client_id}
-                  buttonText="Log in with your UCLA Google Account"
-                  onSuccess={handleLogin}
-                  onFailure={fail}
-                  cookiePolicy={'single_host_origin'}
+                    clientId={client_id}
+                    buttonText="Log in with your UCLA Google Account"
+                    onSuccess={handleLogin}
+                    onFailure={fail}
+                    cookiePolicy={'single_host_origin'}
                 ></GoogleLogin>
               </div>
             </div>
             : (<>
-              <button onClick={getEmail}> email</button>
-              <button onClick={signOut}>Sign Out</button>
+            <button onClick= {getEmail}> email</button>
+            <button onClick={signOut}>Sign Out</button>
             </>
-            )}
-        </div>
+          )}
+          </div>
       </div>
-    </GoogleOAuthProvider>
-    
-    <div id="particles-js"></div><script src="particles.js"></script></>
+      </GoogleOAuthProvider>
   );
 }
 
