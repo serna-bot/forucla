@@ -7,7 +7,7 @@ function Posts() {
     let username = sessionStorage.getItem("username");
     async function getPosts() {
         console.log("i've been called");
-        let request = await fetch("http://localhost:4000/get-posts", {
+        let request = await fetch("http://localhost:4000/posts", {
             method: "GET",
             headers: {
                 "Content-Type" : "application/json"
@@ -15,7 +15,8 @@ function Posts() {
             credentials: "include",
          });
         let response = await request.json();
-        setPosts(response["posts"]);
+        setPosts(response);
+        console.log(response);
     }
     useEffect(()=>{
         if (posts === undefined) {

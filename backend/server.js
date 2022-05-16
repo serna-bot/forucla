@@ -4,15 +4,22 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
 
-import postRoutes from './routes/posts.js'
+import postRoutes from './routes/posts.js';
 
-import {clientId, clientSecret} from "./googlesso.json";
+import { google } from 'googleapis';
+
+import apiKey from "./googlesso.json";
 
 const app = express();
 
 app.use(bodyParser.json({ limit: "30mb" }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
-app.use(cors());
+app.use(cors(
+  {
+    origin: "http://localhost:3000",
+    credentials: true,
+  }
+));
 
 app.use('/posts', postRoutes);
 
@@ -23,6 +30,9 @@ mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: tr
   .then(() => app.listen(PORT, () => { console.log(`Server running on port: ${PORT}`)}))
   .catch((error) => console.log(error.message));
 
+
+const clientId = apiKey.clientId;
+const clientSecret = apiKey.clientSecret;
 
 const oauth2Client = new google.auth.OAuth2(
   clientId,

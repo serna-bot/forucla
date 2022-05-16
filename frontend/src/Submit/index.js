@@ -18,7 +18,7 @@ function Submit() {
     };
 
     async function submitPost() {
-        let request = await fetch("http://localhost:4000/set-posts", {
+        let request = await fetch("http://localhost:4000/posts", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
