@@ -15,7 +15,6 @@ function Homepage() {
     handleTokens();
   }, []);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  // const [email, settingEmail] = useState("");
   const fail = async (data) => {
     console.log("Oh no: ");
     console.log(data);
@@ -36,7 +35,7 @@ function Homepage() {
     // console.log(data);
   };
 
-  const handleTokens = () => {
+  const handleTokens = async () => {
     const query = new URLSearchParams(window.location.search);
     const accessToken = query.get("accessToken");
     console.log(query.get("accessToken"));
@@ -45,10 +44,11 @@ function Homepage() {
     if (accessToken && refreshToken) {
       storeToken(accessToken, refreshToken, expirationDate);
       setIsLoggedIn(true);
-      // const gettingEmail = await getEmail();
-      // settingEmail(gettingEmail);
       console.log("Logged in");
     }
+    let getUsername = await getEmail();
+    getUsername = getUsername.substr(0, getUsername.indexOf("@"));
+    sessionStorage.setItem("username", getUsername);
   };
 
   const newExpirationDate = () => {
@@ -61,6 +61,7 @@ function Homepage() {
     sessionStorage.setItem("accessToken", token);
     sessionStorage.setItem("refreshToken", refreshToken);
     sessionStorage.setItem("expirationDate", expirationDate);
+    
     console.log("storing token", sessionStorage.getItem("accessToken"));
   };
 
@@ -68,35 +69,56 @@ function Homepage() {
     setIsLoggedIn(false);
     sessionStorage.clear();
     console.log("signed out");
-    window.location.href = `http://localhost:3000`
+    window.location.href = `http://localhost:3000`;
   };
 
+  const goToHome = () => {
+    window.location.href = `http://localhost:3000/home`;
+  };
 
   return (
+<<<<<<< HEAD
+    <><GoogleOAuthProvider clientId={client_id}>
+      <div className="home-mes">
+        <h1>The forum for UCLA students and only UCLA students.</h1>
+        <div id="login-mes">
+          {!isLoggedIn ?
+            <div>
+              <div>
+=======
     <GoogleOAuthProvider clientId= {client_id}>
       <div className="home-mes"> 
-          <h1>The forum for UCLA students and only UCLA students.</h1>
           <div id="login-mes">
           { !isLoggedIn ? 
             <div>
+              <h1>The forum for UCLA students and only UCLA students.</h1>
               <div> 
+>>>>>>> f63a9c80741cb5dcf20fe714780a64b9e92acebe
                 <GoogleLogin
-                    clientId={client_id}
-                    buttonText="Log in with your UCLA Google Account"
-                    onSuccess={handleLogin}
-                    onFailure={fail}
-                    cookiePolicy={'single_host_origin'}
+                  clientId={client_id}
+                  buttonText="Log in with your UCLA Google Account"
+                  onSuccess={handleLogin}
+                  onFailure={fail}
+                  cookiePolicy={'single_host_origin'}
                 ></GoogleLogin>
               </div>
             </div>
             : (<>
-            <button onClick= {getEmail}> email</button>
+<<<<<<< HEAD
+              <button onClick={getEmail}> email</button>
+              <button onClick={signOut}>Sign Out</button>
+=======
+            <h1>Welcome!</h1>
+            <button onClick={goToHome}> Go to Homepage</button>
             <button onClick={signOut}>Sign Out</button>
+>>>>>>> f63a9c80741cb5dcf20fe714780a64b9e92acebe
             </>
-          )}
-          </div>
+            )}
+        </div>
       </div>
-      </GoogleOAuthProvider>
+    </GoogleOAuthProvider>
+    
+    <div id="particles-js"></div><script src="particles.js"></script></>
   );
 }
 
