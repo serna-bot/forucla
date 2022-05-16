@@ -77,6 +77,7 @@ function Homepage() {
   };
 
   return (
+<<<<<<< HEAD
     <><GoogleOAuthProvider clientId={client_id}>
       <div className="home-mes">
         <h1>The forum for UCLA students and only UCLA students.</h1>
@@ -84,6 +85,15 @@ function Homepage() {
           {!isLoggedIn ?
             <div>
               <div>
+=======
+    <GoogleOAuthProvider clientId= {client_id}>
+      <div className="home-mes"> 
+          <div id="login-mes">
+          { !isLoggedIn ? 
+            <div>
+              <h1>The forum for UCLA students and only UCLA students.</h1>
+              <div> 
+>>>>>>> f63a9c80741cb5dcf20fe714780a64b9e92acebe
                 <GoogleLogin
                   clientId={client_id}
                   buttonText="Log in with your UCLA Google Account"
@@ -94,9 +104,14 @@ function Homepage() {
               </div>
             </div>
             : (<>
+<<<<<<< HEAD
+              <button onClick={getEmail}> email</button>
+              <button onClick={signOut}>Sign Out</button>
+=======
             <h1>Welcome!</h1>
             <button onClick={goToHome}> Go to Homepage</button>
             <button onClick={signOut}>Sign Out</button>
+>>>>>>> f63a9c80741cb5dcf20fe714780a64b9e92acebe
             </>
             )}
         </div>
