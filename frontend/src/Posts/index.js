@@ -17,7 +17,6 @@ function checkIfDateInRange(timeOfPost, currTime, range) {
 
 function Posts() {
     let [posts, setPosts] = useState(undefined);
-    let username = sessionStorage.getItem("username");
     let searchRes = posts;
     async function getPosts() {
         console.log("i've been called");
@@ -86,9 +85,7 @@ function Posts() {
     return (
         <div className="Posts">
             <Header/>
-            <div id="post-title">
-                <h1>{username}</h1>
-            </div>    
+            <a id="header-submit" href={"/submit"}><button>Submit a post!</button></a>
             <div id="indiv-posts"> 
                 {posts === undefined ?
                     <h1>loading</h1>
@@ -104,7 +101,8 @@ function Posts() {
                         />
                     )})
                 }
-            </div>    
+            </div>  
+            
         </div>
     );
 }

@@ -59,7 +59,7 @@ function Homepage() {
     sessionStorage.setItem("accessToken", token);
     sessionStorage.setItem("refreshToken", refreshToken);
     sessionStorage.setItem("expirationDate", expirationDate);
-    
+    sessionStorage.setItem("anonMode", false);
     console.log("storing token", sessionStorage.getItem("accessToken"));
   };
 
