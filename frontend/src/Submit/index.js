@@ -8,10 +8,8 @@ function Submit() {
     const [title, setTitle] = useState();
     const [message, setMessage] = useState();
     const [chosenCategory, setCategory] = useState();
+    const date = new Date();
     const categories = getCategories();
-    useEffect(() => {
-        //TODO
-    }, []);
 
     const handleDropdownChange = (chosenCategory) => {
         setCategory(chosenCategory.value);
@@ -29,6 +27,7 @@ function Submit() {
                 message: message,
                 category: chosenCategory,
                 creator: sessionStorage.getItem("username"),
+                createdAt: date,
             }),
         })
         .catch((error) => {

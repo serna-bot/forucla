@@ -2,6 +2,19 @@ import { useEffect, useState } from "react";
 import Header from "../shared/Header";
 import "./Posts.scss";
 import IndivPosts from "./IndivPosts";
+
+function checkIfDateInRange(timeOfPost, currTime, range) {
+    const newPostTime = timeOfPost.getTime();
+    const upperBound = currTime.getTime();
+    const timeInMS = range * 60 * 60 * 1000;
+    const lowerBound = upperBound - timeInMS;
+    if (newPostTime >= lowerBound && newPostTime <= upperBound) {
+        console.log("yah", timeOfPost)
+        return true;
+    }
+    return false;
+}
+
 function Posts() {
     let [posts, setPosts] = useState(undefined);
     let username = sessionStorage.getItem("username");
@@ -47,14 +60,19 @@ function Posts() {
                 }
             }
             if (query.has("time")) {
+                const time = parseInt(query.get("time"));
+                const currTime = new Date();
                 console.log("sort by time:", query.get("time"));
-                // searchRes.forEach(element => {
-                //     element.createdAt.splice(0);
-                //     if (true) {
-                //         searchRes.splice(searchRes.indexOf(element), 1);
-                //     }
-                // })
-                // console.log(typeof searchRes[0].createdAt);
+                searchRes.forEach(element => {
+                    const checkingTime = new Date(element.createdAt);
+                    if (!checkIfDateInRange(checkingTime, currTime, time)) {
+                        searchRes.splice(searchRes.indexOf(element), 1);
+                    }
+                })
+                const checkingTime = new Date(searchRes[0].createdAt);
+                if (!checkIfDateInRange(checkingTime, currTime, time)) {
+                    searchRes.splice(0, 1);
+                }
             }
             console.log("current post:",response["posts"]);
         }
