@@ -6,7 +6,7 @@ import {getCategories} from "../shared/categories.js"
 
 function Submit() {
     const [title, setTitle] = useState();
-    const [desc, setDesc] = useState();
+    const [message, setMessage] = useState();
     const [chosenCategory, setCategory] = useState();
     const categories = getCategories();
     useEffect(() => {
@@ -26,8 +26,9 @@ function Submit() {
             credentials: "include",
             body: JSON.stringify ({
                 title: title,
-                desc: desc,
+                message: message,
                 category: chosenCategory,
+                creator: sessionStorage.getItem("username"),
             }),
         })
         .catch((error) => {
@@ -54,7 +55,7 @@ function Submit() {
                     name="description"
                     id="description-input"
                     placeholder="Write a post..."
-                    onChange={(e) => setDesc(e.target.value)}
+                    onChange={(e) => setMessage(e.target.value)}
                 ></textarea>
             </div>
             <Select

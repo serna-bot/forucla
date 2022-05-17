@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
+import Header from "../shared/Header";
 import "./Posts.scss";
 import IndivPosts from "./IndivPosts";
-
 function Posts() {
     let [posts, setPosts] = useState(undefined);
     let username = sessionStorage.getItem("username");
+    let searchRes = posts;
     async function getPosts() {
         console.log("i've been called");
         let request = await fetch("http://localhost:4000/posts", {
@@ -15,39 +16,77 @@ function Posts() {
             credentials: "include",
          });
         let response = await request.json();
-        setPosts(response);
-        console.log(response);
+        console.log("this is the response",response);
+        if (response !== undefined || response.size() != 0) {
+            searchRes = response;
+            console.log("thing",searchRes);
+            const query = new URLSearchParams(window.location.search);
+            if (query.has("category")) {
+                const category = query.get("category")
+                console.log("sort by category:", category);
+                searchRes.forEach(element => {
+                    if (element.category != category) {
+                        console.log("poop:", element);
+                        searchRes.splice(searchRes.indexOf(element), 1);
+                    }
+                })
+                if (searchRes[0].category != category) {
+                    searchRes.splice(0, 1);
+                }
+            }
+            if (query.has("contains")) {
+                const contains = query.get("contains");
+                console.log("sort by contains:", contains);
+                searchRes.forEach(element => {
+                    if (!element.title.includes(contains)) {
+                        searchRes.splice(searchRes.indexOf(element), 1);
+                    }
+                })
+                if (!searchRes[0].title.includes(contains)) {
+                    searchRes.splice(0, 1);
+                }
+            }
+            if (query.has("time")) {
+                console.log("sort by time:", query.get("time"));
+                // searchRes.forEach(element => {
+                //     element.createdAt.splice(0);
+                //     if (true) {
+                //         searchRes.splice(searchRes.indexOf(element), 1);
+                //     }
+                // })
+                // console.log(typeof searchRes[0].createdAt);
+            }
+            console.log("current post:",response["posts"]);
+        }
+        setPosts(searchRes);
     }
     useEffect(()=>{
         if (posts === undefined) {
             getPosts();
         }
     }, [posts]);
-    if (posts != undefined) {
-        console.log("here are the posts");
-        posts.map(function(currVal) {
-            console.log(currVal.title);
-            console.log(currVal.desc);
-        })
-    }
     return (
         <div className="Posts">
+            <Header/>
             <div id="post-title">
                 <h1>{username}</h1>
             </div>    
             <div id="indiv-posts"> 
                 {posts === undefined ?
                     <h1>loading</h1>
-                    : posts.map(function(currVal) {
+                    : 
+                    posts.map(function(currVal) {
                         return (<IndivPosts
                             _id = {currVal._id}
                             title = {currVal.title}
-                            desc = {currVal.desc}
+                            message = {currVal.message}
                             category = {currVal.category}
+                            creator = {currVal.creator}
+                            createdAt = {currVal.createdAt}
                         />
                     )})
                 }
-            </div>      
+            </div>    
         </div>
     );
 }

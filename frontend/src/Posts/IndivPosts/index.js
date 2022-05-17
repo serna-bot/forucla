@@ -41,8 +41,8 @@ function IndivPosts (props) {
     //     getTitle();
     //     getDesc();
     // }, []);
-    console.log("these are the props:");
-    console.log(props);
+    // console.log("these are the props:");
+    // console.log(props);
     return ( 
         <div className="post-indiv-container">
             <div>
@@ -52,8 +52,10 @@ function IndivPosts (props) {
                             This is a post: 
                             <h2>{props.title}</h2>
                         </div>
-                        <p> {props.desc}</p>
+                        <p> {props.message}</p>
                         <p> {props.category}</p>
+                        <p> {props.creator} </p>
+                        <p> {props.createdAt} </p>
                     </div>
                 </div>
             </div> 
