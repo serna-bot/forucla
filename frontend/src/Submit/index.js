@@ -65,7 +65,13 @@ function Submit() {
                 placeholder="You Must Choose a Category"
                 onChange={handleDropdownChange}
             />
-            <button id="submit-button" type="submit" onClick={submitPost}>Submit</button>
+            <div>
+                {sessionStorage["username"] ?
+                    <button id="submit-button" type="submit" onClick={submitPost}>Submit</button>
+                    : <p>You must be logged in to post.</p>
+                }
+            </div>
+            
         </div>
     );
 }
