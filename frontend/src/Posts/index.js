@@ -17,7 +17,6 @@ function checkIfDateInRange(timeOfPost, currTime, range) {
 
 function Posts() {
     let [posts, setPosts] = useState(undefined);
-    let searchRes = posts;
     async function getPosts() {
         console.log("i've been called");
         let request = await fetch("http://localhost:4000/posts", {
@@ -28,52 +27,56 @@ function Posts() {
             credentials: "include",
          });
         let response = await request.json();
+        let searchRes = [...response];
         console.log("this is the response",response);
-        if (response !== undefined || response.size() != 0) {
-            searchRes = response;
-            console.log("thing",searchRes);
+        if (response != undefined || response.size() != 0) {
             const query = new URLSearchParams(window.location.search);
+            console.log("size of before1:", response.length)
             if (query.has("category")) {
                 const category = query.get("category")
                 console.log("sort by category:", category);
-                searchRes.forEach(element => {
-                    if (element.category != category) {
-                        console.log("poop:", element);
-                        searchRes.splice(searchRes.indexOf(element), 1);
+                response.forEach(element => {
+                    let index = searchRes.indexOf(element);
+                    if (index !== -1) {
+                        console.log("butt")
+                        console.log("size of:", searchRes.length)
+                        if (element.category != category) {
+                            console.log("cat removal:", element);
+                            searchRes.splice(index, 1);
+                        }
                     }
                 })
-                if (searchRes[0].category != category) {
-                    searchRes.splice(0, 1);
-                }
             }
+            console.log("size of before2:", response.length)
             if (query.has("contains")) {
                 const contains = query.get("contains");
                 console.log("sort by contains:", contains);
-                searchRes.forEach(element => {
-                    if (!element.title.includes(contains)) {
-                        searchRes.splice(searchRes.indexOf(element), 1);
+                response.forEach(element => {
+                    let index = searchRes.indexOf(element);
+                    if (index !== -1) {
+                        if (!element.title.includes(contains)) {
+                            console.log("content removal:", element);
+                            searchRes.splice(index, 1);
+                        }
                     }
                 })
-                if (!searchRes[0].title.includes(contains)) {
-                    searchRes.splice(0, 1);
-                }
             }
+            console.log("size of before3:", response.length)
             if (query.has("time")) {
                 const time = parseInt(query.get("time"));
                 const currTime = new Date();
                 console.log("sort by time:", query.get("time"));
-                searchRes.forEach(element => {
-                    const checkingTime = new Date(element.createdAt);
-                    if (!checkIfDateInRange(checkingTime, currTime, time)) {
-                        searchRes.splice(searchRes.indexOf(element), 1);
+                response.forEach(element => {
+                    let index = searchRes.indexOf(element);
+                    if (index !== -1) {
+                        const checkingTime = new Date(element.createdAt);
+                        if (!checkIfDateInRange(checkingTime, currTime, time)) {
+                            console.log("time removal:", element);
+                            searchRes.splice(index, 1);
+                        }
                     }
                 })
-                const checkingTime = new Date(searchRes[0].createdAt);
-                if (!checkIfDateInRange(checkingTime, currTime, time)) {
-                    searchRes.splice(0, 1);
-                }
             }
-            console.log("current post:",response["posts"]);
         }
         setPosts(searchRes);
     }
@@ -86,6 +89,7 @@ function Posts() {
         <div className="Posts">
             <Header/>
             <a id="header-submit" href={"/submit"}><button>Submit a post!</button></a>
+            <div></div>
             <div id="indiv-posts"> 
                 {posts === undefined ?
                     <h1>loading</h1>

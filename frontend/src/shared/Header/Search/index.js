@@ -35,7 +35,7 @@ function Search () {
         console.log(categoryString);
         console.log(timeString);
         console.log(searchInput);
-        window.location = "http://localhost:3000/posts?" + categoryString + timeString + searchString;
+        window.location = "http://localhost:3000/allposts?" + categoryString + timeString + searchString;
     };
     return (
         <div>Search:
