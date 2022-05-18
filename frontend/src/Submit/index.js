@@ -3,6 +3,7 @@ import Select from 'react-select';
 import { useEffect, useState } from "react";
 import "./Submit.scss";
 import {getCategories} from "../shared/categories.js"
+import * as api from '../api/index.js';
 
 function Submit() {
     const [title, setTitle] = useState();
@@ -18,26 +19,23 @@ function Submit() {
     };
 
     async function submitPost() {
-        let request = await fetch("http://localhost:4000/posts", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            credentials: "include",
-            body: JSON.stringify ({
-                title: title,
-                desc: desc,
-                category: chosenCategory,
-            }),
-        })
-        .catch((error) => {
-            console.error(error);
-        });
-        let response = await request.json();
+      const post = {
+        title: title,
+        desc: desc,
+        category: chosenCategory,
+      };
+
+      try {
+        const { data } = await api.createPost(post);
+        window.location.href = `/posts`;
         console.log("Posted!");
-        console.log(response);
-        window.location.href = `/posts`
+        console.log(data);
+      } catch (error) {
+        console.log(error.message);
+      }
+      
     }
+
     return (
         <div id="submit-page" className="App">
             <div id="title" className="form-input-container">
