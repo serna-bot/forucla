@@ -9,7 +9,7 @@ import "./index.scss";
 import Homepage from "./Homepage";
 import Posts from "./Posts";
 import Submit from "./Submit"
-import Header from "./shared/Header";
+import CustomizedPosts from "./Posts/CustomizedPosts";
 import App from './App';
 import reportWebVitals from "./reportWebVitals";
 
@@ -19,12 +19,12 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
     //   <App />
     // </React.StrictMode>
   <React.StrictMode>
-    <Header />
     <BrowserRouter>
     <Routes>
         {/* <Route path="/" element={ <App /> } /> */}
         <Route path="/" element={ <Homepage /> } />
-        <Route path="/posts" element={ <Posts /> } />
+        <Route path="/allposts" element={ <Posts /> } />
+        <Route path="/posts" element={ <CustomizedPosts /> } />
         <Route path="/submit" element={ <Submit /> } />
         {/* <Route path="/review" element={ <Post /> } /> */}
       </Routes>

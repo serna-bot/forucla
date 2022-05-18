@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
-import Cookies from "js-cookie";
 import { GoogleLogin } from '@react-oauth/google';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import "./Homepage.scss";
-import { setTokens } from "./token";
 import { getEmail } from "./email.js";
 
 let client_id = "454105536452-d65nbgs30tvjn7gidu1tnkrjhiod19c8.apps.googleusercontent.com";
@@ -13,6 +11,7 @@ function Homepage() {
     handleTokens();
   }, []);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [username, setUsername] = useState(undefined);
   const fail = async (data) => {
     console.log("Oh no: ");
     console.log(data);
@@ -47,6 +46,7 @@ function Homepage() {
     let getUsername = await getEmail();
     getUsername = getUsername.substr(0, getUsername.indexOf("@"));
     sessionStorage.setItem("username", getUsername);
+    setUsername(getUsername);
   };
 
   const newExpirationDate = () => {
@@ -59,7 +59,7 @@ function Homepage() {
     sessionStorage.setItem("accessToken", token);
     sessionStorage.setItem("refreshToken", refreshToken);
     sessionStorage.setItem("expirationDate", expirationDate);
-    
+    sessionStorage.setItem("anonMode", false);
     console.log("storing token", sessionStorage.getItem("accessToken"));
   };
 
@@ -92,11 +92,11 @@ function Homepage() {
               </div>
             </div>
             : (<>
-            <h1>Welcome!</h1>
+            <h1>Welcome {username}!</h1>
             <button onClick={goToHome}> Go to Homepage</button>
             <button onClick={signOut}>Sign Out</button>
-            </>
-          )}
+            </>)
+            }
           </div>
       </div>
       </GoogleOAuthProvider>
