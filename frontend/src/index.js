@@ -5,7 +5,6 @@ import './index.scss';
 import Homepage from './Homepage';
 import Posts from './Posts';
 import Submit from './Submit';
-import CustomizedPosts from './Posts/CustomizedPosts';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
