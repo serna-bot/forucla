@@ -3,7 +3,7 @@ import Select from 'react-select';
 import { useEffect, useState } from 'react';
 import './Submit.scss';
 import Header from '../shared/Header';
-import { getCategories } from '../shared/channels.js';
+import { getChannels } from '../shared/channels.js';
 import * as api from '../api/index.js';
 
 function Submit() {
@@ -11,7 +11,7 @@ function Submit() {
   const [message, setMessage] = useState();
   const [chosenChannel, setChannel] = useState();
   const date = new Date();
-  const categories = getCategories();
+  const channels = getChannels();
 
   const handleDropdownChange = (chosenChannel) => {
     setChannel(chosenChannel.value);
@@ -52,10 +52,9 @@ function Submit() {
           <textarea rows='10' name='description' id='description-input' placeholder='Write a post...' onChange={(e) => setMessage(e.target.value)}></textarea>
         </div>
         <Select
-          // chosenCategory={chosenCategory}
-          options={categories}
+          options={channels}
           openMenuOnClick={false}
-          placeholder='You Must Choose a Category'
+          placeholder='You Must Choose a Channel'
           onChange={handleDropdownChange}
         />
         <div>

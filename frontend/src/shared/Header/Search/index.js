@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 import './Search.scss';
 import React from 'react';
 import Select from 'react-select';
-import { getChannels } from '../.../../channels.js';
+import { getChannels } from '../../channels.js';
 
 function Search() {
-  const categories = getChannels();
+  const channels = getChannels();
   const [channel, setChannel] = useState('All posts');
   const [time, setTime] = useState('All time');
   const [searchInput, setSearchInput] = useState(undefined);
@@ -50,7 +50,7 @@ function Search() {
             <input type='text' placeholder='Search here' value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
           </label>
           <label>
-            <Select options={categories} openMenuOnClick={false} placeholder='Choose a Channel' onChange={onDropdownChange} />
+            <Select options={channels} openMenuOnClick={false} placeholder='Choose a Channel' onChange={onDropdownChange} />
           </label>
           <label>
             <Select options={times} openMenuOnClick={false} placeholder='Choose a Time Period' onChange={onDropdownChangeForTime} />

@@ -30,15 +30,15 @@ function Posts() {
       if (response !== undefined || response.size() !== 0) {
         const query = new URLSearchParams(window.location.search);
         console.log('size of before1:', response.length);
-        if (query.has('category')) {
-          const category = query.get('category');
-          console.log('sort by category:', category);
+        if (query.has('channel')) {
+          const channel = query.get('channel');
+          console.log('sort by channel:', channel);
           response.data.forEach((element) => {
             let index = searchRes.indexOf(element);
             if (index !== -1) {
               console.log('butt');
               console.log('size of:', searchRes.length);
-              if (element.category !== category) {
+              if (element.channel !== channel) {
                 console.log('cat removal:', element);
                 searchRes.splice(index, 1);
               }
