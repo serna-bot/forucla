@@ -3,7 +3,7 @@ import Select from 'react-select';
 import { useEffect, useState } from 'react';
 import './Submit.scss';
 import Header from '../shared/Header';
-import { getCategories } from '../shared/categories.js';
+import { getCategories } from '../shared/channels.js';
 import * as api from '../api/index.js';
 
 function Submit() {
