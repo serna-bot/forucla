@@ -1,23 +1,19 @@
 @use "../_var.scss" as var;
 
 .home-mes {
-    display: flow;
-    flex-direction: column;
-    align-items: center;
+    display: flex;
+    flex-direction:column;
+    align-items: right;
     background-color: rgb(7, 28, 60);
-}
-
-.home-mes .h1 {
-    color: yellow;
-}
-
-.home-mes .background {
-    flex-basis: 20%;
-}
-
-.home-mes .background img {
-    width: 100%;
+    background-image: url("homepage_background.png");
     height: 100vh;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.home-mes h1 {
+    color: yellow;
 }
 
 .home-mes .nav-links{
@@ -36,10 +32,30 @@
     text-decoration: none;
 }
 
-#trapezoid {
-    border-bottom: 100px solid red;
-    border-left: 25px solid transparent;
-    border-right: 25px solid transparent;
+//https://css-tricks.com/the-shapes-of-css/
+#cut-diamond {
+    border-style:solid;
+    border-color: transparent transparent rgb(7, 28, 60) transparent;
+    border-width: 0 25px 25vh 200px;
     height: 0;
-    width: 100px;
+    width: 650px;
+    box-sizing: content-box;
+    position: relative;
+    margin: 0 0 0 0;
+    left: 50%;
+    opacity: 0.5;
+    
+  }
+  #cut-diamond:after {
+    content: "";
+    position: absolute;
+    top: 25vh;
+    left: -200px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: rgb(7, 28, 60) transparent transparent transparent;
+    border-width: 75vh 500px 0 500px;
+    flex-direction: row;
+    align-self:end;
   }

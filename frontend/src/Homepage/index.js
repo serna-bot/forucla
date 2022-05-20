@@ -80,11 +80,8 @@ function Homepage() {
           <div id="login-mes">
           { !isLoggedIn ? 
             <div>
-              <div class="background">
-                <img src='./homepage_background.png'></img>
-              </div>
             <div class="text-loc">
-              <div id="trapezoid"></div>
+              <div id="cut-diamond"></div>
               </div>
               <h1>The forum for UCLA students and only UCLA students.</h1>
               <div> 
