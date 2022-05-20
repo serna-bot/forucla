@@ -80,6 +80,12 @@ function Homepage() {
           <div id="login-mes">
           { !isLoggedIn ? 
             <div>
+              <div class="background">
+                <img src='./homepage_background.png'></img>
+              </div>
+            <div class="text-loc">
+              <div id="trapezoid"></div>
+              </div>
               <h1>The forum for UCLA students and only UCLA students.</h1>
               <div> 
                 <GoogleLogin
@@ -89,6 +95,13 @@ function Homepage() {
                     onFailure={fail}
                     cookiePolicy={'single_host_origin'}
                 ></GoogleLogin>
+              </div>
+              <div class="nav-links">
+                <ul>
+                  <li><a href="#">Contact Us</a></li>
+                  <li><a href="#">About Us</a></li>
+                  <li><a href="#">@2022 oongaboonga</a></li>
+                </ul>
               </div>
             </div>
             : (<>
