@@ -4,10 +4,43 @@ import React from 'react';
 import Select from 'react-select';
 import { getChannels } from '../../channels.js';
 
+const dropStyling = {
+  control: (base, state) => ({
+    ...base,
+    height: 31,
+    width: 200,
+    fontFamily: "Avenir",
+    fontSize: 14,
+    cursor: "text",
+  }),
+
+  option: (styles) => {
+    return{
+      ...styles,
+      height: 31,
+      width: 200,
+      cursor: "pointer",
+      fontFamily: "Avenir",
+    }
+  },
+
+  input: styles => ({
+    ...styles,
+    color: "black",
+    fontFamily: "Avenir",
+  }),
+
+  menu: styles => ({
+    ...styles,
+    position: "absolute",
+    top: "20px",
+  }),
+
+}
 function Search() {
   const channels = getChannels();
-  const [channel, setChannel] = useState('All posts');
-  const [time, setTime] = useState('All time');
+  const [channel, setChannel] = useState('');
+  const [time, setTime] = useState('');
   const [searchInput, setSearchInput] = useState(undefined);
   const times = [
     { value: '1', label: 'an hour ago' },
@@ -43,23 +76,36 @@ function Search() {
   };
   return (
     <div>
-      Search:
-      <div>
-        <form>
-          <label>
-            <input type='text' placeholder='Search here' value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
-          </label>
-          <label>
-            <Select options={channels} openMenuOnClick={false} placeholder='Choose a Channel' onChange={onDropdownChange} />
-          </label>
-          <label>
-            <Select options={times} openMenuOnClick={false} placeholder='Choose a Time Period' onChange={onDropdownChangeForTime} />
-          </label>
-          <button type='submit' onClick={submitSelectedChannel}>
-            {' '}
-            Search
-          </button>
-        </form>
+      <div className='searchStyling'>
+        <div>
+          <input 
+            type='text' 
+            placeholder='Search by Title' 
+            value={searchInput} 
+            onChange={(e) => setSearchInput(e.target.value)} />
+        </div>
+        <div>
+          <Select 
+            value={channel}
+            options={channels} 
+            openMenuOnClick={false} 
+            placeholder='Search by Channel' 
+            styles={dropStyling} 
+            onChange={onDropdownChange} />
+        </div>
+        <div>
+          <Select 
+            value={time}
+            options={times} 
+            openMenuOnClick={false} 
+            placeholder='Search by Time Period' 
+            styles={dropStyling} 
+            onChange={onDropdownChangeForTime} />
+        </div>
+        <button id= "button_styling" type='submit' onClick={submitSelectedChannel}>
+          {' '}
+          Search
+        </button>
       </div>
     </div>
   );

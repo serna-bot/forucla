@@ -47,12 +47,13 @@ function Posts() {
         }
         console.log('size of before2:', response.length);
         if (query.has('contains')) {
-          const contains = query.get('contains');
+          const contains = query.get('contains').toLowerCase();
           console.log('sort by contains:', contains);
           response.data.forEach((element) => {
             let index = searchRes.indexOf(element);
+            let lowercaseTitle = element.title.toLowerCase();
             if (index !== -1) {
-              if (!element.title.includes(contains)) {
+              if (!lowercaseTitle.includes(contains)) {
                 console.log('content removal:', element);
                 searchRes.splice(index, 1);
               }
@@ -89,20 +90,22 @@ function Posts() {
   }, [posts]);
 
   return (
-    <div className='Posts'>
+    <div>
       <Header />
-      <a id='header-submit' href={'/submit'}>
-        <button>Submit a post!</button>
-      </a>
-      <div></div>
-      <div id='indiv-posts'>
-        {posts === undefined ? (
-          <h1>loading</h1>
-        ) : (
-          posts.map(function (currVal) {
-            return <IndivPosts _id={currVal._id} title={currVal.title} message={currVal.message} channel={currVal.channel} creator={currVal.creator} createdAt={currVal.createdAt} />;
-          })
-        )}
+      <div className='Posts'>
+        <a href={'/submit'}>
+          <button id='submit_button'>Submit a post!</button>
+        </a>
+        <div></div>
+        <div id='indiv-posts'>
+          {posts === undefined ? (
+            <h1>loading</h1>
+          ) : (
+            posts.map(function (currVal) {
+              return <IndivPosts _id={currVal._id} title={currVal.title} message={currVal.message} channel={currVal.channel} creator={currVal.creator} createdAt={currVal.createdAt} />;
+            })
+          )}
+        </div>
       </div>
     </div>
   );

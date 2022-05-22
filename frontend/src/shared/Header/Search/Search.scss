@@ -1,0 +1,44 @@
+@use "../../../var.scss" as var;
+
+.searchStyling {
+    height: 31px;
+    width: 900px;
+    display: flex;
+    flex-flow: row wrap;
+    margin-top: 10px;
+    margin-left: 10px;
+    border-radius: 10px;
+
+    input {
+        height: 100%;
+        width: 400px;
+        padding-left: 5;
+        padding-right: 2;
+        display: inline-block;
+        outline: none;
+        background-color: white;
+        border: none;
+        border-bottom: 3px;
+        flex-grow: 1;
+        font-family: "Avenir";
+        font-size: 14px;
+        font-weight: 400;
+        border-radius: 10%;
+    }
+}
+
+#button_styling {
+    height: 37px;
+    width: fit-content;
+    border: none;
+    text-align: center;
+    font-family: "Avenir";
+    font-size: 14;
+    border-radius: 5px;
+    transition-duration: 0.4s;
+}
+
+#button_styling:hover {
+    background-color: var.$main-blue; /* Green */
+    color: white;
+}

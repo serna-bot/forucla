@@ -20,3 +20,21 @@
     justify-content: space-evenly;
 
 }
+
+#submit_button {
+    float: right;
+    position: relative;
+    height: 31px;
+    width: fit-content;
+    border: none;
+    text-align: center;
+    font-family: "Avenir";
+    font-size: 14;
+    border-radius: 5px;
+    transition-duration: 0.4s;
+}
+
+#submit_button:hover {
+    background-color: var.$main-blue; /* Green */
+    color: white;
+}
