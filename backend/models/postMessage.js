@@ -4,7 +4,7 @@ const postSchema = mongoose.Schema({
   title: String,
   message: String,
   creator: String,
-  category: String,
+  channel: String,
   selectedFile: String,
   upvoteCount: {
     type: Number,
