@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import './Search.scss';
 import React from 'react';
-import Select from 'react-select';
+import Select, { NonceProvider } from 'react-select';
 import { getChannels } from '../../channels.js';
+import search from '../../../assets/search.png'
 
 const dropStyling = {
   control: (base, state) => ({
@@ -50,11 +51,17 @@ function Search() {
   ];
 
   const onDropdownChangeForTime = (time) => {
+    sessionStorage.setItem("searchTime", time.value);
     setTime(time);
   };
   const onDropdownChange = (channel) => {
+    sessionStorage.setItem("searchChannel", channel.value);
     setChannel(channel);
   };
+  const onSearchChange = (title) => {
+    sessionStorage.setItem("searchTitle", title.target.value);
+    setSearchInput(title.target.value);
+  }
   const submitSelectedChannel = (effect) => {
     effect.preventDefault();
     let channelString = '';
@@ -78,11 +85,13 @@ function Search() {
     <div>
       <div className='searchStyling'>
         <div>
+          <img src={search} alt="search_img"/>
           <input 
             type='text' 
             placeholder='Search by Title' 
             value={searchInput} 
-            onChange={(e) => setSearchInput(e.target.value)} />
+            defaultValue={sessionStorage.getItem("searchTitle")}
+            onChange={onSearchChange} />
         </div>
         <div>
           <Select 
@@ -91,6 +100,7 @@ function Search() {
             openMenuOnClick={false} 
             placeholder='Search by Channel' 
             styles={dropStyling} 
+            maxMenuHeight={100}
             onChange={onDropdownChange} />
         </div>
         <div>
@@ -100,6 +110,7 @@ function Search() {
             openMenuOnClick={false} 
             placeholder='Search by Time Period' 
             styles={dropStyling} 
+            maxMenuHeight={100}
             onChange={onDropdownChangeForTime} />
         </div>
         <button id= "button_styling" type='submit' onClick={submitSelectedChannel}>

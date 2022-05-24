@@ -1,0 +1,57 @@
+@use "../_var.scss" as var;
+
+body {
+    background-color: var.$background;
+}
+
+.submit-page {
+    display: flex;
+    flex-flow: column;
+    position: relative;
+    margin-top: 61px;
+    right: 0px;
+    left: 0px;
+    font-family: "Avenir";
+    font-size: 16px;
+    align-items: center;
+
+    #title {
+        position: relative;
+
+        label {
+            font-size: 18px;
+        }
+        input {
+            width: 400px;
+            border: none;
+            font-size: 16px;
+        }
+    }
+    #description {
+        position: relative;
+        textarea {
+            font-size: "Avenir";
+            width: 440px;
+            height: 400px;
+        }
+    }
+}
+
+#submit-button {
+    position: relative;
+    margin-top: 5px;
+    height: 31px;
+    width: fit-content;
+    border: none;
+    text-align: center;
+    font-family: "Avenir";
+    font-size: 14px;
+    border-radius: 5px;
+    transition-duration: 0.4s;
+    background-color: rgb(215, 215, 215);
+}
+
+#submit-button:hover {
+    background-color: var.$main-blue;
+    color: white;
+}

@@ -1,16 +1,13 @@
 @use "../_var.scss" as var;
 
-#post-title {
-    display: flex;
-    h1 {
-        display: inline-block;
-        width: max-content;
-        margin: 0;
-        font-size: medium;
-        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-        font-weight: bold;
-        color: aquamarine;
-    }
+body {
+    background-color: var.$background;
+}
+
+.Posts {
+    display: block;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 #indiv-posts {
@@ -21,17 +18,23 @@
 
 }
 
-#submit_button {
-    float: right;
-    position: relative;
+.Sidebar {
+    position: fixed;
     height: 31px;
+    top: 20%;
+    left: 80%;
     width: fit-content;
+}
+
+#submit_button {
+    
     border: none;
     text-align: center;
     font-family: "Avenir";
     font-size: 14;
     border-radius: 5px;
     transition-duration: 0.4s;
+    background-color: rgb(215, 215, 215);
 }
 
 #submit_button:hover {

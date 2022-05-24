@@ -1,14 +1,20 @@
 @use "../../_var.scss" as var;
 
 .header_styling {
-    height: 65px;
-    width: 1300px;
+    height: 62px;
     position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 4;
+    padding: 0;
+    margin: 0;
+    border: 0;
     display: flex;
     flex-flow: row nowrap;
-    margin-top: 10px;
-    margin-left: 10px;
     border-radius: 10px;
+    background: white;
 
     h1 {
         font-family: 'Lato', sans-serif;
@@ -19,10 +25,6 @@
         top: -18px;
 
     }
-    a:link { text-decoration: none; }
-    a:visited { text-decoration: none; }
-    a:hover { text-decoration: none; }
-    a:active { text-decoration: none; }
 
     img {
         width:85px;
@@ -30,63 +32,114 @@
         position: relative;
         top: -16px;
     }
-}
 
-#for_styling {
-    color: #88b3de;
-}
+    #logged-in {
+        display: flex;
+        flex-flow: row;
+        #anon-toggle {
+            position: relative;
+            top: -7px;
+            left: -10px;
+        
+            input[type=checkbox] {
+                height: 0;
+                width: 0;
+                visibility: hidden;
+            }
+            
+            label {
+                cursor: pointer;
+                width: 60px;
+                height: 33px;
+                background: #88b3de;
+                display: block;
+                border-radius: 100px;
+                position: relative;
+            }
+            
+            label::after {
+                content: '';
+                position: absolute;
+                top: 4px;
+                left: 4px;
+                width: 25px;
+                height: 25px;
+                background: white;
+                border-radius: 25px;
+                transition: 0.3s;
+            }
+            
+            input:checked + label {
+                background: grey;
+            }
+        
+            input:checked + label::after {
+                left: calc(100% - 5px);
+                transform: translate(-100%);
+            }
+            
+            label:active::after {
+                width: 38px;
+            }
+        }
+    }
 
-#ucla_styling {
-    color: var.$main-yellow;
-}
-
-#logo {
-    display: flex;
-    flex-flow: row;
-}
-#anon-toggle {
-    position: relative;
-    top: -7px;
-    left: -38px;
-
-    input[type=checkbox] {
-        height: 0;
-        width: 0;
-        visibility: hidden;
+    #guest-mode {
+        display: flex;
+        flex-flow: row;
     }
     
-    label {
+    #logo {
+        display: flex;
+        flex-flow: row;
+        margin-left: 10px;
         cursor: pointer;
-        width: 60px;
-        height: 33px;
-        background: #88b3de;
-        display: block;
-        border-radius: 100px;
-        position: relative;
-    }
-    
-    label::after {
-        content: '';
-        position: absolute;
-        top: 4px;
-        left: 4px;
-        width: 25px;
-        height: 25px;
-        background: white;
-        border-radius: 25px;
-        transition: 0.3s;
-    }
-    
-    input:checked + label {
-        background: grey;
-    }
 
-    input:checked + label::after {
-        left: calc(100% - 5px);
-        transform: translate(-100%);
+        #for_styling {
+            color: #88b3de;
+        }
+        
+        #ucla_styling {
+            color: var.$main-yellow;
+        }
     }
     
-    label:active::after {
-        width: 38px;
+    .dropbtn {
+        background-color: #88b3de;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        font-family: "Avenir";
+        border: none;
     }
+    
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+    
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: rgb(211, 230, 238);
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    
+        button {
+            border: none;
+            padding: 12px 16px;
+            width: 100%;
+            display: block;
+            color: black;
+            background-color: transparent;
+        }
+    
+        button:hover {background-color: #ddd;}
+    
+    }
+    
+    .dropdown:hover .dropdown-content {display: block;}
+    
+    .dropdown:hover .dropbtn {background-color: var.$main-yellow;}
 }

@@ -63,16 +63,13 @@ function Homepage() {
     console.log("storing token", sessionStorage.getItem("accessToken"));
   };
 
-  const signOut = () => {
-    setIsLoggedIn(false);
-    sessionStorage.clear();
-    console.log("signed out");
-    window.location.href = `http://localhost:3000`;
-  };
-
   const goToHome = () => {
     window.location.href = `http://localhost:3000/posts`;
   };
+
+  const goToSubmit = () => {
+    window.location.href = `http://localhost:3000/submit`;
+  }
 
   return (
     <GoogleOAuthProvider clientId= {client_id}>
@@ -82,19 +79,14 @@ function Homepage() {
             <div>
               <h1>The forum for UCLA students and only UCLA students.</h1>
               <div> 
-                <GoogleLogin
-                    clientId={client_id}
-                    buttonText="Log in with your UCLA Google Account"
-                    onSuccess={handleLogin}
-                    onFailure={fail}
-                    cookiePolicy={'single_host_origin'}
-                ></GoogleLogin>
+                <button onClick={handleLogin}> Log in with your UCLA Google Account </button>
+                <button onClick={goToHome}> Browse as a guest! </button>
               </div>
             </div>
             : (<>
             <h1>Welcome {username}!</h1>
             <button onClick={goToHome}> Go to Homepage</button>
-            <button onClick={signOut}>Sign Out</button>
+            <button onClick={goToSubmit}>Submit a Post</button>
             </>)
             }
           </div>

@@ -8,8 +8,18 @@
     margin-top: 10px;
     margin-left: 10px;
     border-radius: 10px;
+    
+    img {
+        position: relative;
+        top: 5px;
+        width: 28px;
+        height: 28px;
+        border: none;
+    }
 
     input {
+        position: relative;
+        top: -3px;
         height: 100%;
         width: 400px;
         padding-left: 5;
@@ -28,6 +38,8 @@
 }
 
 #button_styling {
+    position: relative;
+    left: 3px;
     height: 37px;
     width: fit-content;
     border: none;

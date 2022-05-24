@@ -5,7 +5,8 @@
     flex-flow: column;
     width: 413px;
     box-sizing: border-box;
-    font-family: "Comic Sans MS", "Comic Sans", cursive; //im begging you please change the font later
+    background-color: white;
+    font-family: "Avenir"; 
     margin-top: 75px;
 
 }
@@ -15,4 +16,10 @@
         font-size: 12;
         font-family: "Comic Sans MS", "Comic Sans", cursive;
     }
+}
+
+#post_header {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
 }

@@ -6,6 +6,36 @@ import Header from '../shared/Header';
 import { getChannels } from '../shared/channels.js';
 import * as api from '../api/index.js';
 
+const dropStyling = {
+  control: (base, state) => ({
+    ...base,
+    fontFamily: "Avenir",
+    fontSize: 14,
+    cursor: "text",
+  }),
+
+  option: (styles) => {
+    return{
+      ...styles,
+      height: 31,
+      cursor: "pointer",
+      fontFamily: "Avenir",
+    }
+  },
+
+  input: styles => ({
+    ...styles,
+    color: "black",
+    fontFamily: "Avenir",
+  }),
+
+  menu: styles => ({
+    ...styles,
+    position: "absolute",
+    top: "20px",
+  }),
+}
+
 function Submit() {
   const [title, setTitle] = useState();
   const [message, setMessage] = useState();
@@ -43,20 +73,24 @@ function Submit() {
   return (
     <div>
       <Header />
-      <div id='submit-page' className='App'>
-        <div id='title' className='form-input-container'>
-          <label htmlFor='title-input'>Title:</label>
-          <input type='text' name='title' id='title-input' placeholder='Write a title...' onChange={(e) => setTitle(e.target.value)} />
-        </div>
-        <div id='description' className='form-input-container'>
-          <textarea rows='10' name='description' id='description-input' placeholder='Write a post...' onChange={(e) => setMessage(e.target.value)}></textarea>
-        </div>
-        <Select
-          options={channels}
-          openMenuOnClick={false}
-          placeholder='You Must Choose a Channel'
-          onChange={handleDropdownChange}
-        />
+      <div className='submit-page'>
+        <form>
+          <div id='title'>
+            <label htmlFor='title-input'>Title:</label>
+            <input type='text' name='title' id='title-input' placeholder='Write a title...' onChange={(e) => setTitle(e.target.value)}/>
+          </div>
+          <div id='description'>
+            <textarea rows='10' name='description' id='description-input' placeholder='Write a message...' onChange={(e) => setMessage(e.target.value)}></textarea>
+          </div>
+          <Select
+            options={channels}
+            openMenuOnClick={false}
+            maxMenuHeight={100}
+            styles={dropStyling} 
+            placeholder='You Must Choose a Channel'
+            onChange={handleDropdownChange}
+          />
+        </form>
         <div>
           {sessionStorage['username'] ? (
             <button id='submit-button' type='submit' onClick={submitPost}>
