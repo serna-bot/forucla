@@ -1,6 +1,7 @@
 import { google } from 'googleapis';
 
 import apiKey from '../googlesso.json';
+import UserModel from '../models/user.js';
 
 const clientId = apiKey.clientId;
 const clientSecret = apiKey.clientSecret;
@@ -57,5 +58,18 @@ export const getValidToken = async (req, res) => {
     });
   } catch (error) {
     res.json({ error: error.message });
+  }
+};
+
+export const getUserData = async (req, res) => {
+  const { username, email, profilePicture } = req.body;
+  try {
+    let user;
+    user = await UserModel.findOne({ email });
+    if (!user) user = await UserModel.create({ username, email, profilePicture });
+    res.json(user);
+  } catch (error) {
+    res.status(500).json({ message: 'Something went wrong' });
+    console.log(error);
   }
 };
