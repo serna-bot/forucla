@@ -1,10 +1,11 @@
 import express from 'express';
 
-import { getPosts, createPost, updatePost, deletePost, upvotePost, downvotePost } from '../controllers/posts.js';
+import { getPosts, getPost, createPost, updatePost, deletePost, upvotePost, downvotePost } from '../controllers/posts.js';
 
 const router = express.Router();
 
 router.get('/', getPosts);
+router.get('/:id', getPost);
 router.post('/', createPost);
 router.patch('/:id/upvotePost', upvotePost);
 router.patch('/:id/downvotePost', downvotePost);
