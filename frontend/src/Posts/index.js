@@ -4,7 +4,9 @@ import IndivPosts from './IndivPosts';
 import * as api from '../api/index.js';
 import Header from '../shared/Header';
 import Channels from './Channels';
+import Filters from './Filters'
 import uclabanner from '../assets/uclabanner.png'
+import TopChannels from './TopChannels';
 
 function checkIfDateInRange(timeOfPost, currTime, range) {
   const newPostTime = timeOfPost.getTime();
@@ -12,7 +14,6 @@ function checkIfDateInRange(timeOfPost, currTime, range) {
   const timeInMS = range * 60 * 60 * 1000;
   const lowerBound = upperBound - timeInMS;
   if (newPostTime >= lowerBound && newPostTime <= upperBound) {
-    console.log('yah', timeOfPost);
     return true;
   }
   return false;
@@ -98,18 +99,20 @@ function Posts() {
     <div>
       <Header />
       <div className='Posts'>
+        <Filters/>
         <div className='Sidebar'>
           <img src={uclabanner} alt='banner'></img>
           <a href={'/submit'}>
             <button id='submit_button'>Submit a post!</button>
           </a>
           <Channels/>
+          <TopChannels/>
         </div>
         <div id='indiv-posts'>
           {
             (() => {
               if (posts === undefined)
-                return <h1>No posts.</h1>
+                return <h1>Loading</h1>
               else if (posts.length === 0)
                 return <h1>No posts.</h1>
               else 
@@ -120,13 +123,6 @@ function Posts() {
                 )
             })()
           }
-          {/* {posts === undefined ? (
-            <h1>loading</h1>
-          ) : (
-            posts.map(function (currVal) {
-              return <IndivPosts _id={currVal._id} title={currVal.title} message={currVal.message} channel={currVal.channel} creator={currVal.creator} createdAt={currVal.createdAt} />;
-            })
-          )} */}
         </div>
       </div>
     </div>

@@ -115,7 +115,9 @@ function IndivPosts(props) {
           </div>
           <div className='post-descript'>
             <h4>{props.title}</h4>
-            <p> {props.message}</p>
+            <div id='message'>
+              <p> {props.message}</p>
+            </div>
           </div>
         </div>
       </div>

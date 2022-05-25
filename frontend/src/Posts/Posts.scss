@@ -11,12 +11,20 @@
     flex-flow: column wrap;
     align-items: center;
     justify-content: space-evenly;
+    margin-top: 70px;
+
+    h1 {
+        font-family: "Avenir";
+        font-size: 40px;
+        color: rgb(45, 71, 92);
+    }
 }
 
 .Sidebar {
     display: flex;
     flex-flow: column;
     position: fixed;
+    z-index: 9;
     height: 31px;
     top: 20%;
     left: 76%;

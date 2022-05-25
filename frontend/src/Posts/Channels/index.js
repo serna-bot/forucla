@@ -51,9 +51,17 @@ function Channels() {
                 channelsString = channelsString + item + ",";
             });
         }
-        console.log("channelstring: ", channelsString);
-        sessionStorage.setItem("channels", channelsString);
-        window.location.href = `http://localhost:3000/posts?multichannel=` + channelsString;
+        if (channelsString !== '') {
+            console.log("channelstring: ", channelsString);
+            sessionStorage.setItem("channels", channelsString);
+            sessionStorage.removeItem("searchChannel");
+            sessionStorage.removeItem("searchTitle");
+            sessionStorage.removeItem("searchTime");
+            window.location.href = `http://localhost:3000/posts?multichannel=` + channelsString;
+        }
+        else {
+            window.location.href = `http://localhost:3000/posts`;
+        }
     };
     return (
         <div>

@@ -48,6 +48,8 @@ function Search() {
     { value: '24', label: 'a day ago' },
     { value: '168', label: 'a week ago' },
     { value: '5040', label: 'a month ago' },
+    { value: '60480', label: 'a year ago'},
+    { value: '604800', label: 'a long time ago'},
   ];
 
   const onDropdownChangeForTime = (time) => {
@@ -64,6 +66,7 @@ function Search() {
   }
   const submitSelectedChannel = (effect) => {
     effect.preventDefault();
+    sessionStorage.removeItem("channels");
     let channelString = '';
     let timeString = '';
     let searchString = '';
@@ -115,7 +118,6 @@ function Search() {
         <div>
           <Select 
             value={time}
-            defaultValue={{value: "ur mom", label: "ur mom"}}
             options={times} 
             openMenuOnClick={false} 
             placeholder='Search by Time Period' 
