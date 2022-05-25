@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const userSchema = mongoose.Schema({
   username: { type: String, required: true },
   email: { type: String, required: true },
-  profilePicture: { type: Image },
+  profilePicture: { type: String },
   id: { type: String },
 });
 
