@@ -3,23 +3,61 @@
 .post-indiv-container {
     display: flex;
     flex-flow: column;
-    width: 413px;
+    width: 560px;
     box-sizing: border-box;
     background-color: white;
+    border-radius: 7px;
+    border-color: var.$border-color;
+    border-style: solid;
+    border-width: 1px;
+    min-height: 200px;
     font-family: "Avenir"; 
     margin-top: 75px;
 
 }
 
 .post-descript {
+    position: relative;
+    margin-left: 10px;
+    h4 {
+        font-family: 'Yantramanav', sans-serif, Regular 400;
+        font-size: 20px;
+        margin: 5px;
+    }
     p {
-        font-size: 12;
-        font-family: "Comic Sans MS", "Comic Sans", cursive;
+        font-size: 15px;
+        font-family: 'Dosis', sans-serif;
+        padding: auto;
+        margin-left: 5px;
     }
 }
 
 #post_header {
     display: flex;
     flex-flow: row;
-    justify-content: space-evenly;
+    margin-left: 45px;
+    position: relative;
+    left: -6.5%;
+    align-items: center;
+    text-align: center;
+    img {
+        margin-right: 1%;
+        height: 30px;
+        width: 30px;
+    }
+    p {
+        font-size: 14px;
+        font-family: 'Raleway', sans-serif, Thin 100;
+        color: rgb(106, 106, 106);
+        margin-right: 15px;
+    }
+    #dot {
+        display: inline-flex;
+        background-color: rgb(106, 106, 106);
+        height: 3px;
+        width: 3px;
+        border-radius: 50%;
+        position: relative;
+        left: -1.5%;
+    }
 }

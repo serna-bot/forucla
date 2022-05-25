@@ -3,6 +3,7 @@ import { GoogleLogin } from '@react-oauth/google';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import "./Homepage.scss";
 import { getEmail } from "./email.js";
+import { getPhoto } from "./email.js";
 
 let client_id = "454105536452-d65nbgs30tvjn7gidu1tnkrjhiod19c8.apps.googleusercontent.com";
 
@@ -44,8 +45,10 @@ function Homepage() {
       console.log("Logged in");
     }
     let getUsername = await getEmail();
+    let getProfPic = await getPhoto();
     getUsername = getUsername.substr(0, getUsername.indexOf("@"));
     sessionStorage.setItem("username", getUsername);
+    sessionStorage.setItem("profilePic", getProfPic);
     setUsername(getUsername);
   };
 

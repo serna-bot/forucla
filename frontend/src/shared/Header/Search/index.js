@@ -70,11 +70,20 @@ function Search() {
     if (channel.value != undefined) {
       channelString = 'channel=' + channel.value;
     }
+    else {
+      sessionStorage.removeItem("searchChannel");
+    }
     if (time.value != undefined) {
       timeString = '&time=' + time.value;
     }
+    else {
+      sessionStorage.removeItem("searchTime");
+    }
     if (searchInput != undefined) {
       searchString = '&contains=' + searchInput;
+    }
+    else {
+      sessionStorage.removeItem("searchTitle");
     }
     console.log(channelString);
     console.log(timeString);
@@ -106,6 +115,7 @@ function Search() {
         <div>
           <Select 
             value={time}
+            defaultValue={{value: "ur mom", label: "ur mom"}}
             options={times} 
             openMenuOnClick={false} 
             placeholder='Search by Time Period' 

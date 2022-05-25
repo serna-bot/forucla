@@ -4,6 +4,7 @@ import IndivPosts from './IndivPosts';
 import * as api from '../api/index.js';
 import Header from '../shared/Header';
 import Channels from './Channels';
+import uclabanner from '../assets/uclabanner.png'
 
 function checkIfDateInRange(timeOfPost, currTime, range) {
   const newPostTime = timeOfPost.getTime();
@@ -19,7 +20,6 @@ function checkIfDateInRange(timeOfPost, currTime, range) {
 
 function Posts() {
   let [posts, setPosts] = useState(undefined);
-  let username = sessionStorage.getItem('username');
 
   async function getPosts() {
     try {
@@ -27,6 +27,7 @@ function Posts() {
       console.log(response);
       let searchRes = [...response.data];
       if (response !== undefined || response.size() !== 0) {
+        searchRes = searchRes.reverse();
         const query = new URLSearchParams(window.location.search);
         if (query.has('multichannel')) {
           const multiChannel = query.get('multichannel');
@@ -98,6 +99,7 @@ function Posts() {
       <Header />
       <div className='Posts'>
         <div className='Sidebar'>
+          <img src={uclabanner} alt='banner'></img>
           <a href={'/submit'}>
             <button id='submit_button'>Submit a post!</button>
           </a>

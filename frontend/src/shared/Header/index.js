@@ -16,7 +16,7 @@ function signIn() {
 }
 
 function gotoProfile() {
-    window.location.href = `http://localhost:3000`;
+    // window.location.href = `http://localhost:3000`;
 }
 
 function goHome() {
@@ -58,6 +58,7 @@ function Header() {
                                 </div>
                                 <div className="dropdown">
                                     <button className="dropbtn"> 
+                                    <img src={sessionStorage.getItem("profilePic")} alt="profPic"></img>
                                     {anonMode ?
                                     <p>AnonMode</p>
                                     : <p>{username}</p>
@@ -73,7 +74,7 @@ function Header() {
                         return (
                             <div id="guest-mode">
                                 <div className="dropdown">
-                                    <button className="dropbtn">Guest</button>
+                                    <button className="dropbtn"><p>Guest</p></button>
                                     <div className="dropdown-content">
                                         <button onClick={signIn}> Login</button>
                                     </div>

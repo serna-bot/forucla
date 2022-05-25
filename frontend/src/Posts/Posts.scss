@@ -1,9 +1,5 @@
 @use "../_var.scss" as var;
 
-body {
-    background-color: var.$background;
-}
-
 .Posts {
     display: block;
     margin-top: auto;
@@ -15,29 +11,46 @@ body {
     flex-flow: column wrap;
     align-items: center;
     justify-content: space-evenly;
-
 }
 
 .Sidebar {
+    display: flex;
+    flex-flow: column;
     position: fixed;
     height: 31px;
     top: 20%;
-    left: 80%;
-    width: fit-content;
+    left: 76%;
+    width: 300px;
+    height: 400px;
+    background-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-width: 1px;
+    border-color: var.$border-color;
+    border-radius: 4px;
+    align-items: center;
+
+    img {
+        width: 100%;
+    }
 }
 
 #submit_button {
-    
-    border: none;
+    width: 275px;
+    height: 45px;
+    margin-top: 5px;
     text-align: center;
     font-family: "Avenir";
-    font-size: 14;
-    border-radius: 5px;
+    font-size: 16px;
+    border-radius: 25px;
     transition-duration: 0.4s;
-    background-color: rgb(215, 215, 215);
+    background-color: rgb(255, 255, 255);
+    border-color: var.$accent-blue;
+    border-width: 2px;
+    margin-bottom: 12px;
 }
 
 #submit_button:hover {
-    background-color: var.$main-blue; /* Green */
+    background-color: var.$main-blue;
+    border: none;
     color: white;
 }

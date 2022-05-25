@@ -7,7 +7,7 @@ const dropStyling = {
     control: (base, state) => ({
       ...base,
       minHeight: 31,
-      width: 200,
+      width: 275,
       fontFamily: "Avenir",
       fontSize: 14,
       cursor: "text",
@@ -17,7 +17,7 @@ const dropStyling = {
       return{
         ...styles,
         height: 31,
-        width: 200,
+        width: 275,
         cursor: "pointer",
         fontFamily: "Avenir",
       }
@@ -39,16 +39,10 @@ const dropStyling = {
 function Channels() {
     const channels = getChannels();
     const [channel, setChannel] = useState([]);
-    const [channelsArray, setChannelArray] = useState([]);
 
     const onDropdownChange = (e) => {
         setChannel(Array.isArray(e) ? e.map(x => x.value) : []);
     };
-    const getChannelsSess = () => {
-        let channelString = sessionStorage.getItem("channels");
-        setChannelArray(channelString.split(","));
-        console.log(channelsArray);
-    }
     const changePage = (effect) => {
         effect.preventDefault();
         let channelsString = '';
@@ -73,7 +67,7 @@ function Channels() {
             placeholder='Channel Filter' 
             styles={dropStyling} 
             onChange={onDropdownChange} />
-            <button onClick={changePage}>Select</button>
+            <button id='submitCat_button' onClick={changePage}>Filter Channels</button>
         </div>
     );
 
