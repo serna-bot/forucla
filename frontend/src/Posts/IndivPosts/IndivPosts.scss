@@ -1,20 +1,36 @@
 @use "../../_var.scss" as var;
 
-.post-indiv-container {
+.post-updown-container {
     display: flex;
-    flex-flow: column;
-    width: 560px;
+    flex-flow: row;
     box-sizing: border-box;
-    background-color: white;
+    background-color: rgb(240, 240, 240);
     border-radius: 7px;
     border-color: var.$border-color;
     border-style: solid;
     border-width: 1px;
     min-height: 200px;
     max-height: 500px;
-    font-family: "Avenir"; 
     margin-top: 7.5px;
     margin-bottom: 7.5px;
+    width: 600px;
+}
+
+.up-down-buttons {
+    display: flex;
+    flex-flow: column;
+    width: 40px;
+    margin: 3px;
+}
+
+.post-indiv-container {
+    display: flex;
+    flex-flow: column;
+    width: 560px;
+    border-left: 1px solid var.$border-color ;
+    box-sizing: border-box;
+    background-color: white;
+    font-family: "Avenir"; 
 }
 
 .post-descript {

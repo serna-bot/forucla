@@ -3,8 +3,8 @@
 .Filters {
     display: flex;
     flex-flow: row;
-    position: absolute;
-    top: 8%;
+    position: fixed;
+    bottom: 0;
     margin-left: 10px;
     font-family: 'Roboto Flex', sans-serif, Light 300;
     font-size: 12px;

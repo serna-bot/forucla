@@ -6,6 +6,7 @@ import Homepage from './Homepage';
 import Posts from './Posts';
 import Submit from './Submit';
 import App from './App';
+import PostPage from './PostPage';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -18,7 +19,8 @@ root.render(
       <Routes>
         {/* <Route path="/" element={ <App /> } /> */}
         <Route path='/' element={<Homepage />} />
-        <Route path='/posts' element={<Posts />} />
+        <Route exact path='/posts' element={<Posts />} />
+        <Route path='/posts/:id' element={<PostPage />} />
         <Route path='/submit' element={<Submit />} />
         {/* <Route path="/review" element={ <Post /> } /> */}
       </Routes>
