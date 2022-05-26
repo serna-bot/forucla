@@ -4,6 +4,7 @@ import memelogo from '../assets/memelogo.png';
 import relationshiplogo from '../assets/relationshiplogo.png';
 import schooladvicelogo from '../assets/schooladvicelogo.png';
 import sportslogo from '../assets/sportslogo.png';
+import careerlogo from '../assets/careerlogo.png';
 
 export function getLogo(props) {
     if (props === 'Memes') {
@@ -18,5 +19,7 @@ export function getLogo(props) {
         return clubreclogo;
     } else if (props === 'Sports') {
         return sportslogo;
+    } else if (props === 'Career Related') {
+        return careerlogo;
     }
 }

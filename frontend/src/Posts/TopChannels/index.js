@@ -1,7 +1,10 @@
 import './TopChannels.scss';
 import { useEffect, useState } from 'react';
 import * as api from '../../api/index';
-import {getLogo} from '../../shared/getLogo.js'
+import {getLogo} from '../../shared/getLogo.js';
+import first from '../../assets/first.png';
+import second from '../../assets/second.png'
+import third from '../../assets/third.png'
 
 let topFive = [];
 
@@ -34,6 +37,17 @@ function sortTopFive(props) {
     }
 };
 
+function getCrown(prop) {
+    if (prop === 0) {
+        return first;
+    }
+    else if (prop === 1) {
+        return second;
+    }
+    else {
+        return third;
+    }
+}
 
 function TopChannels () {
     let [posts, setPosts] = useState(undefined);
@@ -67,7 +81,10 @@ function TopChannels () {
                         topFive.map(function (currVal, index) {
                             return (
                                 <div id='topChannels'> 
-                                    <h3> {index + 1}</h3>
+                                    {(index < 3 && index >= 0) ?
+                                        <img id='trophy' src={getCrown(index)} alt='crowns'></img>
+                                        : <h4> {index + 1}</h4>
+                                    }
                                     <img src={getLogo(currVal[0])} alt='logo'></img>
                                     <h3>{currVal[0]}</h3> 
                                     <p>{currVal[1]}</p>

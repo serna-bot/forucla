@@ -1,0 +1,59 @@
+@use "../../var.scss" as var;
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grape+Nuts&family=Lobster&family=Pacifico&display=swap');
+
+#calendar {
+    width: 300px;
+    align-items: center;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    
+    h1 {
+        font-family: 'Pacifico', cursive;
+        color: var.$main-blue;
+        padding: 0;
+        margin-top: 0px;
+        margin-bottom: -20px;
+    }
+    h2 {
+        font-family: 'Grape Nuts', cursive;
+        color: var.$main-yellow;
+        padding: 0;
+        margin-top: 30px;
+        margin-bottom: 8px;
+    }
+    hr {
+        width: 85%;
+        height: 2px;
+        border: none;
+        border-radius: 50px;
+        background-color: var.$accent-blue;
+    }
+}
+
+#redirect-buttons {
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    button {
+        width: 250px;
+        height: 35px;
+        margin-top: 0;
+        margin-bottom: 10px;
+        margin-left: 5px;
+        border: none;
+        text-align: center;
+        font-family: "Avenir";
+        font-size: 14;
+        border-radius: 25px;
+        transition-duration: 0.4s;
+    }
+    button:hover {
+        background-color: var.$main-blue; /* Green */
+        color: white;
+    }
+}

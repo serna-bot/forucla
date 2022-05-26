@@ -20,7 +20,7 @@
     }
 }
 
-.Sidebar {
+.SidebarRight {
     display: flex;
     flex-flow: column;
     position: fixed;
@@ -35,9 +35,33 @@
     border-color: var.$border-color;
     border-radius: 4px;
     align-items: center;
-
+    
     img {
         width: 100%;
+    }
+}
+
+.SidebarLeft {
+    display: flex;
+    flex-flow: column;
+    position: absolute;
+    top: 10.2%;
+    left: 3%;
+    width: 300px;
+    height: 400px;
+    background-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-width: 1px;
+    border-color: var.$border-color;
+    border-radius: 4px;
+    align-items: center;
+
+    #cropped {
+        width: 367px;
+        height: 100px;
+        object-fit: cover;
+        object-position: 0 95% ;
+        margin: 0;
     }
 }
 

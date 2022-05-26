@@ -1,10 +1,11 @@
 export function getChannels() {
   return [
-    { value: 'Memes', label: 'Memes' },
-    { value: 'School Advice', label: 'School Advice' },
-    { value: 'Confessions', label: 'Confessions' },
-    { value: 'Relationships', label: 'Relationships' },
+    { value: 'Career Related', label: 'Career Related'},
     { value: 'Club Recruitment', label: 'Club Recruitment' },
+    { value: 'Confessions', label: 'Confessions' },
+    { value: 'Memes', label: 'Memes' },
+    { value: 'Relationships', label: 'Relationships' },
+    { value: 'School Advice', label: 'School Advice' },
     { value: 'Sports', label: 'Sports' },
   ];
 }

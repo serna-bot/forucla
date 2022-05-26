@@ -1,4 +1,6 @@
 @use "../../var.scss" as var;
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Satisfy&display=swap');
+
 
 .Rankings {
     display: flex;
@@ -6,10 +8,10 @@
     height: 50px;
     p {
         font-size: 16px;
-        font-family: 'Roboto Flex', sans-serif, Light 300;
+        font-family: 'Pacifico', cursive;
         text-align: center;
-        margin-top: 3px;
-        margin-bottom: 3px;
+        margin-top: 1px;
+        margin-bottom: 1px;
     }
 }
 
@@ -22,6 +24,12 @@
     padding: 0;
     margin-left: -50px;
     margin-top: -1px;
+
+    #trophy {
+        margin-left: 15px;
+        margin-right: 10px;
+    }
+
     img {
         height: 28px;
         width: 28px;
@@ -29,14 +37,24 @@
         padding: 0;
     }
     p {
-        font-size: 16px;
-        font-family: 'Roboto Flex', sans-serif, Light 300;
+        font-size: 18px;
+        font-family: 'Pacifico', cursive;
+        color: rgb(55, 74, 109);
         padding: 0;
+        margin-top: -2px;
     }
     h3 {
-        font-family: 'Yantramanav', sans-serif, Regular 400;
+        font-family: 'Satisfy', cursive;
         font-size: 16px;
-        margin-right: 20px;
+        margin-left: 15px;
+        margin-right: 40px;
         padding: 0;
+    }
+    h4 {
+        font-family: 'Satisfy', cursive;
+        font-size: 16px;
+        margin-left: 25px;
+        margin-right: 20px;
+        color: rgb(84, 84, 84);
     }
 }

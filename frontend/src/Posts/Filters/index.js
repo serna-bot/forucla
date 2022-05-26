@@ -4,8 +4,6 @@ function Filters() {
     let channelString = sessionStorage.getItem("channels");
     let searchChannel = sessionStorage.getItem("searchChannel");
     let searchTime = sessionStorage.getItem("searchTime");
-    let hasTime = sessionStorage["searchTime"];
-    let hasChannel = sessionStorage["searchChannel"];
     let time;
     let channelFilters;
     if (sessionStorage["channels"]) {

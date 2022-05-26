@@ -5,8 +5,10 @@ import * as api from '../api/index.js';
 import Header from '../shared/Header';
 import Channels from './Channels';
 import Filters from './Filters'
-import uclabanner from '../assets/uclabanner.png'
+import uclabanner from '../assets/uclabanner.png';
+import banner2 from '../assets/banner2.png';
 import TopChannels from './TopChannels';
+import Calender from './Calendar';
 
 function checkIfDateInRange(timeOfPost, currTime, range) {
   const newPostTime = timeOfPost.getTime();
@@ -88,6 +90,7 @@ function Posts() {
           }
         }
       }
+      
       setPosts(searchRes);
     } catch (error) {
       console.log(error.message);
@@ -99,20 +102,24 @@ function Posts() {
       getPosts();
     }
   }, [posts]);
-
+  
   return (
     <div>
       <Header />
       <div className='Posts'>
-        <div className='Sidebar'>
+        <div className='SidebarRight'>
           <img src={uclabanner} alt='banner'></img>
           <button id='submit_button' onClick={submitChange}>Submit a post!</button>
           <Channels/>
           <TopChannels/>
         </div>
+        <div className='SidebarLeft'>
+          <img src={banner2} alt="banner" id='cropped'></img>
+          <Calender/>
+        </div>
           <div id='indiv-posts'>
           {(() => {
-            if (posts === undefined) return <h1>No posts.</h1>;
+            if (posts === undefined) return <h1>Loading.</h1>;
             else if (posts.length === 0) return <h1>No posts.</h1>;
             else
               return posts.map(function (currVal) {
