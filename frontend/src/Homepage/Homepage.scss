@@ -10,3 +10,84 @@
         font-family: "Comic Sans MS", "Comic Sans", cursive;
     }
 }
+
+
+#text_dec{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #fff;
+    font-size: 1vw;
+    
+}
+
+
+.welcome {
+    position: absolute;
+  top: 0;
+  left: 0; 
+  right: 0;
+  bottom: 0;
+    background-image: url('../assets/background_welcome.png');
+    background-size: 100%;
+   
+  
+  
+}
+
+.overlay_blue{
+   
+    position: fixed;
+    height: 100%;
+    width:29.5%;
+    background-image: url('../assets/bluething_welcome.png');
+    text-align: center;
+    
+    
+}
+
+.overlay_emblem
+{
+    pointer-events:none;
+   position: absolute;
+   height: 100%;
+    width:100%;
+    right: 9.5%;
+   background-image: url('../assets/emblem_welcome.png');
+   background-size: 70%;
+   background-repeat: no-repeat;
+   background-position: center;
+}
+
+
+
+
+
+/* CSS */
+.button-22 {
+ 
+  appearance: button;
+  background-color: #0276FF;
+  border-radius: 8px;
+  border-style: none;
+  box-shadow: rgba(255, 255, 255, 0.26) 0 1px 2px inset;
+  color: #fff;
+  cursor: pointer;
+  font-family: "RM Neue",sans-serif;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+  padding: 10px 21px;
+  text-transform: none;
+  transition: color .13s ease-in-out,background .13s ease-in-out,opacity .13s ease-in-out,box-shadow .13s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  
+}
+
+.button-22:active {
+  background-color: #006AE8;
+}
+
+.button-22:hover {
+  background-color: #1C84FF;
+}
