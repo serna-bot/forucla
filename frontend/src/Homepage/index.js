@@ -76,24 +76,43 @@ function Homepage() {
 
   return (
     <GoogleOAuthProvider clientId= {client_id}>
+      
       <div className="home-mes"> 
           <div id="login-mes">
           { !isLoggedIn ? 
-            <div>
-              <h1>The forum for UCLA students and only UCLA students.</h1>
-              <div> 
-                <button onClick={handleLogin}> Log in with your UCLA Google Account </button>
-                <button onClick={goToHome}> Browse as a guest! </button>
-              </div>
+           
+          <div className="welcome" id="text_dec"> 
+            <div className="overlay_blue">
+             <br></br>
+             <br></br>
+             <br></br>
+             <br></br>
+             <br></br>
+             <br></br>
+
+                <div >
+                <h1>Welcome Page</h1>
+                <br></br>
+                <br></br>
+                  <button class="button-22" onClick={handleLogin}> Log with your UCLA Google Account </button>
+                  <h2> -------- OR ---------</h2>
+                  <button class="button-22"  onClick={goToHome}>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;     Browse as a guest!  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;     </button>
+                </div>
+             
             </div>
+            </div>
+           
             : (<>
             <h1>Welcome {username}!</h1>
             <button onClick={goToHome}> Go to Homepage</button>
             <button onClick={goToSubmit}>Submit a Post</button>
             </>)
             }
+            <div className="overlay_emblem"> </div>
           </div>
-      </div>
+          </div>
+          
+      
       </GoogleOAuthProvider>
   );
 }
