@@ -93,11 +93,11 @@ function Homepage() {
              <br></br>
 
                 <div >
-                <h1> Welcome Page</h1>
+                <h1> Welcome to ForUCLA </h1>
                 <br></br>
                 <br></br>
                   <button class="button-55" onClick={handleLogin}> Log with your UCLA Google Account </button>
-                  <h2> ------------------------ OR ------------------------ </h2>
+                   <h2 className="h2-line">OR</h2>
                   <button class="button-55"  onClick={goToHome}>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;     Browse as a guest!  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;     </button>
                 </div>
              
