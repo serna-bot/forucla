@@ -74,7 +74,9 @@ function Homepage() {
     window.location.href = `http://localhost:3000/submit`;
   }
 
+  
   return (
+    
     <GoogleOAuthProvider clientId= {client_id}>
       
       <div className="home-mes"> 
@@ -91,12 +93,12 @@ function Homepage() {
              <br></br>
 
                 <div >
-                <h1>Welcome Page</h1>
+                <h1> Welcome Page</h1>
                 <br></br>
                 <br></br>
-                  <button class="button-22" onClick={handleLogin}> Log with your UCLA Google Account </button>
-                  <h2> -------- OR ---------</h2>
-                  <button class="button-22"  onClick={goToHome}>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;     Browse as a guest!  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;     </button>
+                  <button class="button-55" onClick={handleLogin}> Log with your UCLA Google Account </button>
+                  <h2> ------------------------ OR ------------------------ </h2>
+                  <button class="button-55"  onClick={goToHome}>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;     Browse as a guest!  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;     </button>
                 </div>
              
             </div>
@@ -108,6 +110,8 @@ function Homepage() {
             <button onClick={goToSubmit}>Submit a Post</button>
             </>)
             }
+            <br></br>
+            <br></br>
             <div className="overlay_emblem"> </div>
           </div>
           </div>
