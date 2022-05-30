@@ -19,6 +19,21 @@
     
 }
 
+.h2-line {
+
+display: flex;
+flex: row;
+  
+}
+
+.h2-line:before,.h2-line:after {
+  content: "";
+  flex: .5 .5;
+  border-bottom: 1px solid #fff;
+  margin: auto;
+  margin-left: 20px;
+  margin-right: 20px;
+}
 
 .welcome {
     position: absolute;
