@@ -102,17 +102,20 @@ function Homepage() {
                 </div>
              
             </div>
+            <br></br>
+                <br></br>
+                <div className="overlay_emblem"> </div>
             </div>
+            
            
-            : (<>
+            : (<div className="afterLogin">
+              <div id="cut-diamond"></div>
             <h1>Welcome {username}!</h1>
             <button onClick={goToHome}> Go to Homepage</button>
             <button onClick={goToSubmit}>Submit a Post</button>
-            </>)
+            </div>)
             }
-            <br></br>
-            <br></br>
-            <div className="overlay_emblem"> </div>
+            
           </div>
           </div>
           

@@ -149,3 +149,47 @@ flex: row;
 .button-55:focus {
   box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
 }
+
+.afterLogin {
+    width: 100%;
+    height: 100vh;
+    background-image: url("../assets/background_afterLogin.png");
+    background-size: contain;
+    //background-repeat: no-repeat;
+}
+
+.afterLogin gradient {
+    background: linear-gradient(to right, blue, purple);
+}
+
+.afterLogin .h1 {
+    text-align: center;
+    vertical-align: middle;
+}
+
+#cut-diamond {
+    border-style:solid;
+    border-color: transparent transparent rgb(7, 28, 60) transparent;
+    border-width: 0 25px 25vh 200px;
+    height: 0;
+    width: 650px;
+    box-sizing: content-box;
+    position: relative;
+    margin: 0 0 0 0;
+    left: 50%;
+    opacity: 0.90;
+    
+  }
+  #cut-diamond:after {
+    content: "";
+    position: absolute;
+    top: 25vh;
+    left: -200px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: rgb(7, 28, 60) transparent transparent transparent;
+    border-width: 75vh 500px 0 500px;
+    flex-direction: row;
+    align-self:end;
+  }
