@@ -156,11 +156,9 @@ flex: row;
     background-image: url("../assets/background_afterLogin.png");
     background-size: contain;
     overflow: hidden;
+    overflow-x: hidden;
+    position: relative;
     //background-repeat: no-repeat;
-}
-
-.afterLogin gradient {
-    background: linear-gradient(to right, blue, purple);
 }
 
 #cut-diamond {
@@ -197,16 +195,17 @@ flex: row;
     position: absolute;
     height: 100%;
     width:100%;
-    left: 45%;
+    left: 72%;
     bottom: 40%;
     background-image: url('../assets/emblem_welcome.png');
-    background-size: 70%;
+    background-size: 100%;
     background-repeat: no-repeat;
     background-position: right;
     flex-direction: row;
     align-self:end;
     z-index: 10;
     overflow: hidden;
+    //outline: solid 1px red;
   }
 
   .button-66 {
