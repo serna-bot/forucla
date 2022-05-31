@@ -3,20 +3,20 @@
 ForUCLA is a web application that aims to connect bruins to UCLA. We provide a list of UCLA-related events and links to necessary websites like BruinLearn and MyUCLA. Most importantly, we provide a forum where bruins can connect with one and another to ask for career advice, information on club recruitment, share memes, etc!
 
 ## Features:
--User Login/Authentication via Google
--Ability to post textual content
--Ability to comment, upvote, and downvote on posts
--Different, organized categories to post on
--Search functionality for posts
--Ability to post anonymously
+- User Login/Authentication via Google
+- Ability to post textual content
+- Ability to comment, upvote, and downvote on posts
+- Different, organized categories to post on
+- Search functionality for posts
+- Ability to post anonymously
 
 ## Technologies:
--MongoDB
--Express.js
--Node.js
--React.js
--SCSS
--JavaScript
+- MongoDB
+- Express.js
+- Node.js
+- React.js
+- SCSS
+- JavaScript
 
 ## Setup:
 In order to run this application locally, you will first need to download or clone a copy of this repository.
