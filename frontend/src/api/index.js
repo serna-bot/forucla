@@ -7,6 +7,7 @@ export const fetchPosts = () => axios.get(url);
 export const createPost = (newPost) => axios.post(url, newPost);
 export const upvotePost = (id) => axios.patch(`${url}/${id}/upvotePost`);
 export const downvotePost = (id) => axios.patch(`${url}/${id}/downvotePost`);
+export const comment = (value, id) => axios.post(`${url}/${id}/commentPost`, { value });
 
 // POTENTIAL FUNCTIONALITY
 export const updatePost = (id, updatedPost) => axios.patch(`${url}/${id}`, updatedPost);
