@@ -155,6 +155,7 @@ flex: row;
     height: 100vh;
     background-image: url("../assets/background_afterLogin.png");
     background-size: contain;
+    overflow: hidden;
     //background-repeat: no-repeat;
 }
 
@@ -162,24 +163,19 @@ flex: row;
     background: linear-gradient(to right, blue, purple);
 }
 
-.afterLogin .h1 {
-    text-align: center;
-    vertical-align: middle;
-}
-
 #cut-diamond {
     border-style:solid;
     border-color: transparent transparent rgb(7, 28, 60) transparent;
-    border-width: 0 25px 25vh 200px;
+    border-width: 0 0px 25vh 200px;
     height: 0;
-    width: 650px;
+    width: 50%;
     box-sizing: content-box;
     position: relative;
     margin: 0 0 0 0;
     left: 50%;
     opacity: 0.90;
-    
   }
+
   #cut-diamond:after {
     content: "";
     position: absolute;
@@ -192,4 +188,72 @@ flex: row;
     border-width: 75vh 500px 0 500px;
     flex-direction: row;
     align-self:end;
+    overflow: hidden;
+
+  }
+
+  #emblem {
+    pointer-events:none;
+    position: absolute;
+    height: 100%;
+    width:100%;
+    left: 45%;
+    bottom: 40%;
+    background-image: url('../assets/emblem_welcome.png');
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: right;
+    flex-direction: row;
+    align-self:end;
+    z-index: 10;
+    overflow: hidden;
+  }
+
+  .button-66 {
+    align-self: center;
+    background-color: rgb(227, 188, 12);
+    background-image: none;
+    background-position: 0 90%;
+    background-repeat: repeat no-repeat;
+    background-size: 5px 3px;
+    border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+    border-style: solid;
+    border-width: 2px;
+    box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+    box-sizing: border-box;
+    color: #41403e;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Neucha, sans-serif;
+    font-size: 3rem;
+    line-height: 75px;
+    outline: none;
+    padding: .75rem;
+    text-decoration: none;
+    transition: all 235ms ease-in-out;
+    border-bottom-left-radius: 15px 255px;
+    border-bottom-right-radius: 225px 15px;
+    border-top-left-radius: 255px 15px;
+    border-top-right-radius: 15px 225px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+
+  .button-66:hover {
+    box-shadow: rgba(0, 0, 0, .6) 2px 8px 80px -50px;
+    transform: translate3d(0, 10px, 0);
+  }
+  
+  .button-66:focus {
+    box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+  }
+
+  .afterLogin h1 {
+    font-size: 75px;
+    font-family: Jazz LET, fantasy;
+    z-index: 100;
+//    background-color: rgba(227, 188, 12,.2);
+//    background-size: 50% auto;
+//    background-repeat: no-repeat;
   }
