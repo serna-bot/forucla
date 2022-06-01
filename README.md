@@ -26,8 +26,8 @@ Create a file named "googlesso.json" under the backend folder, and add the follo
 
 ```
 {
-    "clientId": "454105536452-d65nbgs30tvjn7gidu1tnkrjhiod19c8.apps.googleusercontent.com",
-    "clientSecret": "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"
+    "clientId": "insert clientId",
+    "clientSecret": "insert clientSecret"
 }
 ```
 
