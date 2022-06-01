@@ -24,6 +24,8 @@
     padding: 0;
     margin-left: -50px;
     margin-top: -1px;
+    position:relative;
+    //border: 5px solid red;
 
     #trophy {
         margin-left: 15px;
@@ -42,6 +44,11 @@
         color: rgb(55, 74, 109);
         padding: 0;
         margin-top: -2px;
+        flex-flow: row;
+        //margin-right: 200px;
+        position: absolute;
+        right: -20px;
+        //border: 5px solid red;
     }
     h3 {
         font-family: 'Satisfy', cursive;
