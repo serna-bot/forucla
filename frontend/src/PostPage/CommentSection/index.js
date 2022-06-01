@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import * as api from '../../api/index.js';
+import "./CommentSection.scss"
 
 const CommentSection = ({ post }) => {
   console.log(post);
@@ -29,7 +30,9 @@ const CommentSection = ({ post }) => {
       </div>
       <div id='comment-container'>
         {comments.map((c, i) => (
-          <h1 key={i}>{c}</h1>
+          <div id='comment'>
+            <p key={i}>{c}</p>
+          </div>
         ))}
       </div>
     </div>

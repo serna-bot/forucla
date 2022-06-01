@@ -1,0 +1,29 @@
+@use "../../var.scss" as var;
+
+#comment-container {
+    display: flex;
+    flex-flow: column;
+    margin-left: 6px;
+    margin-bottom: 6px;
+    border-color: var.$border-color;
+    border-style: solid;
+    border-radius: 5px;
+    background-color: white;
+    width: 98.3%;
+
+    #comment {
+        margin-left: 8px;
+        margin-top: 4px;
+        margin-bottom: 4px;
+        border-radius: 2px;
+        height: fit-content;
+        width: 97.3%;
+        background-color: rgb(238, 238, 238);
+
+        p {
+            margin-left: 3px;
+            font-family: "Avenir";
+            color: rgb(53, 53, 53);
+        }
+    }
+}

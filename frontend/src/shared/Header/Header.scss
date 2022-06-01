@@ -80,9 +80,12 @@
             label:active::after {
                 width: 38px;
             }
-            h6 {
+            p {
+                font-family: "Avenir";
+                color: white;
+                font-weight: None;
                 position: absolute;
-                top: -35px;
+                top: -13px;
                 left: 37px;
                 font-size: 17px; 
             }

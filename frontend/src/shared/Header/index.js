@@ -15,10 +15,6 @@ function signIn() {
     window.location.href = `http://localhost:3000`;
 }
 
-function gotoProfile() {
-    // window.location.href = `http://localhost:3000`;
-}
-
 function goHome() {
     window.location.href = `http://localhost:3000/posts`;
     sessionStorage.removeItem("searchTitle");
@@ -60,7 +56,7 @@ function Header() {
                                 <div id="anon-toggle">
                                     <input id="switch" type="checkbox" checked={anonMode} onClick={changeAnon}/>
                                     <label for="switch" data-off = "AnOFF" data-on = "AnON">
-                                            <h6>{anMode}</h6>
+                                            <p>{anMode}</p>
                                     </label>
                                 </div>
                                 <div className="dropdown">
@@ -72,7 +68,6 @@ function Header() {
                                     }</button>
                                     <div className="dropdown-content">
                                         <button onClick={signOut}> Logout</button>
-                                        <button onClick={gotoProfile}> Profile</button>
                                     </div>
                                 </div>
                             </div>
