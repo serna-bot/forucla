@@ -29,14 +29,20 @@ function goHome() {
 
 function Header() {
     const currAnon = sessionStorage.getItem("anonMode") === 'true';
+    var anMode = "AnON";
+    if (!currAnon) {
+        anMode= "AnOFF";
+    }
     let [anonMode, setAnonMode] = useState (currAnon);
     let username = undefined;
     if (sessionStorage["username"]) {
         username = sessionStorage.getItem("username");
     }
     function changeAnon () {
+        console.log(currAnon);
         setAnonMode(!currAnon);
         sessionStorage.setItem("anonMode", !currAnon);
+        console.log(currAnon);
     }
     return (
     <div className="header_styling">
@@ -54,6 +60,7 @@ function Header() {
                                 <div id="anon-toggle">
                                     <input id="switch" type="checkbox" checked={anonMode} onClick={changeAnon}/>
                                     <label for="switch" data-off = "AnOFF" data-on = "AnON">
+                                            <h6>{anMode}</h6>
                                     </label>
                                 </div>
                                 <div className="dropdown">

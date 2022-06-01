@@ -38,7 +38,7 @@
         #anon-toggle {
             position: relative;
             top: -7px;
-            left: -10px;
+            left: -7px; //CHANGE THIS
         
             input[type=checkbox] {
                 height: 0;
@@ -48,7 +48,7 @@
             
             label {
                 cursor: pointer;
-                width: 60px;
+                width: 125px;
                 height: 33px;
                 background: var.$accent-blue;
                 display: block;
@@ -79,6 +79,12 @@
             
             label:active::after {
                 width: 38px;
+            }
+            h6 {
+                position: absolute;
+                top: -35px;
+                left: 37px;
+                font-size: 17px; 
             }
         }
     }

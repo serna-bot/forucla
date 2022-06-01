@@ -2,11 +2,11 @@
 
 .searchStyling {
     height: 31px;
-    width: 900px;
+    width: 850px; //CHANGE THIS
     display: flex;
     flex-flow: row wrap;
     margin-top: 10px;
-    margin-left: 10px;
+    margin-left: 7px; //CHANGE THIS
     border-radius: 10px;
     
     img {
@@ -21,7 +21,7 @@
         position: relative;
         top: -3px;
         height: 100%;
-        width: 400px;
+        width: 350px; //CHANGE THIS
         padding-left: 5;
         padding-right: 2;
         display: inline-block;
