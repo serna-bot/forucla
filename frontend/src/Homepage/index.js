@@ -4,6 +4,7 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import "./Homepage.scss";
 import { getEmail } from "./email.js";
 import { getPhoto } from "./email.js";
+import welcome3 from "../assets/welcome3.mp4"
 
 let client_id = "454105536452-d65nbgs30tvjn7gidu1tnkrjhiod19c8.apps.googleusercontent.com";
 
@@ -84,6 +85,7 @@ function Homepage() {
           { !isLoggedIn ? 
            
           <div className="welcome" id="text_dec"> 
+            <video autoplay='' muted loop id="myVideo"> <source src={welcome3} type="video/mp4"></source></video>
             <div className="overlay_blue">
              <br></br>
              <br></br>
