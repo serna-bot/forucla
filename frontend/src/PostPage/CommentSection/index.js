@@ -1,13 +1,18 @@
 import React, { useState, useRef } from 'react';
 import * as api from '../../api/index.js';
 import "./CommentSection.scss"
+import speech_bubble from "../../assets/speech_bubble.png"
 
 const CommentSection = ({ post }) => {
   console.log(post);
   const [comments, setComments] = useState(post?.comments);
   const [comment, setComment] = useState('');
   const user = sessionStorage.getItem('username');
-
+  let submitStringPlaceholder = "Submit a comment"
+  if (sessionStorage.getItem('username') === "") {
+    submitStringPlaceholder = "You must be logged in to comment."
+  }
+  
   const handleClick = async () => {
     const finalComment = `${user}: ${comment}`;
     try {
@@ -25,12 +30,15 @@ const CommentSection = ({ post }) => {
   return (
     <div>
       <div id='submit-comment'>
-        <textarea id='comment_input' placeholder='Submit a comment.' onChange={(e) => setComment(e.target.value)}></textarea>
-        <button onClick={handleClick}>Submit</button>
+        <textarea id='comment_input' placeholder={submitStringPlaceholder} onChange={(e) => setComment(e.target.value)}></textarea>
+        {sessionStorage.getItem('username') !== "" && 
+          <button onClick={handleClick}>Submit</button>
+        }
       </div>
       <div id='comment-container'>
         {comments.map((c, i) => (
           <div id='comment'>
+            <img src={speech_bubble} alt="speech_bubble"></img>
             <p key={i}>{c}</p>
           </div>
         ))}

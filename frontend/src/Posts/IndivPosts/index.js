@@ -22,6 +22,9 @@ function IndivPosts(props) {
   let [upCount, setUpCount] = useState(1);
   //awiat and get the upvote count
   const handleUpvote = () => {
+    if (sessionStorage.getItem('username') === "") {
+      return;
+    }
     if (dvImg === downvoteclicked) {
       setUpCount(++upCount);
       console.log("removing downvote", upCount);
@@ -39,6 +42,9 @@ function IndivPosts(props) {
   };
 
   const handleDownvote = () => {
+    if (sessionStorage.getItem('username') === "") {
+      return;
+    }
     if (upImg === upvoteclicked) {
       setUpCount(--upCount);
       setUpImg(upvote);

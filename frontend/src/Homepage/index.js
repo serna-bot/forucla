@@ -110,13 +110,11 @@ function Homepage() {
            
             : (<div className="afterLogin">
               <div id="emblem"></div>
-              <div id="cut-diamond"></div>
-            <h1>Welcome {username}!</h1>
-            <br></br>
-            <button class = "button-66" onClick={goToHome}> Go to Homepage</button>
-            <br></br>
-            <br></br>
-            <button class = "button-66" onClick={goToSubmit}>Submit a Post</button>
+              <div id="cut-diamond">
+                <h1>Welcome {username}!</h1>
+                <button class = "button-66" onClick={goToHome}> Go to Homepage</button>
+                <button class = "button-66" onClick={goToSubmit}>Submit a Post</button>
+              </div>
             </div>)
             }
             

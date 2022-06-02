@@ -52,6 +52,7 @@
         font-size: 14;
         border-radius: 25px;
         transition-duration: 0.4s;
+        cursor: pointer;
     }
     button:hover {
         background-color: var.$main-blue; /* Green */
@@ -99,7 +100,7 @@
     }
     #message {
         position: relative;
-        top: -15px;
+        top: -8px;
         font-size: 14px;
         font-family: 'Roboto Flex', sans-serif, Light 300;
         padding: auto;
