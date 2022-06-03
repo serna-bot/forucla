@@ -7,7 +7,7 @@ ForUCLA is a web application that aims to connect bruins to UCLA. We provide a l
 - User Login/Authentication via Google
 - Ability to post textual content
 - Ability to comment, upvote, and downvote on posts
-- Different, organized categories to post on
+- Different, organized channels to post on
 - Search functionality for posts
 - Ability to post anonymously
 
