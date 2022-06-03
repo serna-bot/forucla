@@ -20,6 +20,10 @@ app.use(
 app.use('/posts', postRoutes);
 app.use('/login', loginRoutes);
 
+app.get('/', (req, res) => {
+  res.send('APP IS RUNNING.');
+});
+
 const CONNECTION_URL = 'mongodb://localhost:27017';
 const PORT = process.env.port || 4000;
 
