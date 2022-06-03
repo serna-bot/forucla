@@ -1,138 +1,197 @@
-@use "../../_var.scss" as var;
+@use '../../_var.scss' as var;
 
 .post-updown-container {
-    display: flex;
-    flex-flow: row;
-    box-sizing: border-box;
-    background-color: rgb(240, 240, 240);
-    border-radius: 7px;
-    border-color: var.$border-color;
-    border-style: solid;
-    border-width: 1px;
-    min-height: 200px;
-    max-height: 500px;
-    margin-top: 7.5px;
-    margin-bottom: 7.5px;
-    width: 600px;
+  display: flex;
+  flex-flow: row;
+  box-sizing: border-box;
+  background-color: rgb(240, 240, 240);
+  border-radius: 7px;
+  border-color: var.$border-color;
+  border-style: solid;
+  border-width: 1px;
+  min-height: 200px;
+  max-height: 500px;
+  margin-top: 7.5px;
+  margin-bottom: 7.5px;
+  width: 600px;
 }
 
 .title-text-container {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .up-down-buttons {
-    display: flex;
-    flex-flow: column;
+  display: flex;
+  flex-flow: column;
+  width: 40px;
+  margin: 3px;
+
+  p {
+    position: relative;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    color: rgb(123, 123, 123);
+  }
+
+  #upvoted-text {
+    color: rgb(36, 124, 212);
+  }
+
+  #downvoted-text {
+    color: rgb(241, 76, 16);
+  }
+
+  button {
+    display: inline-block;
     width: 40px;
-    margin: 3px;
+    height: 40px;
+    margin: 1px;
+    border: none;
+    cursor: pointer;
 
-    p {
-        position: relative;
-        text-align: center;
-        margin: 0;
-        padding: 0;
-        color: rgb(123, 123, 123);
+    img {
+      position: relative;
+      left: -22%;
+      width: 145%;
+      height: 100%;
     }
-
-    #upvoted-text {
-        color: rgb(36, 124, 212);
-    }
-
-    #downvoted-text {
-        color: rgb(241, 76, 16);
-    }
-
-    button {
-        display: inline-block;
-        width: 40px;
-        height: 40px;
-        margin: 1px;
-        border: none;
-        cursor: pointer;
-
-        img {
-            position: relative;
-            left: -22%;
-            width: 145%;
-            height: 100%;
-        }
-    }
+  }
 }
 
 .post-indiv-container {
-    display: flex;
-    flex-flow: column;
-    width: 560px;
-    border-radius: 0 7px 7px 0;
-    border-left: 1px solid var.$border-color ;
-    box-sizing: border-box;
-    background-color: white;
-    font-family: "Avenir"; 
+  display: flex;
+  flex-flow: column;
+  width: 560px;
+  border-radius: 0 7px 7px 0;
+  border-left: 1px solid var.$border-color;
+  box-sizing: border-box;
+  background-color: white;
+  font-family: 'Avenir';
 }
 
+.post-page-container {
+  display: flex;
+  flex-flow: column;
+  width: 760px;
+  border-radius: 0 7px 7px 0;
+  border-left: 1px solid var.$border-color;
+  box-sizing: border-box;
+  background-color: white;
+  font-family: 'Avenir';
+  overflow: hidden;
+}
+
+.whole-main-post-container {
+  display: flex;
+  flex-flow: row;
+  box-sizing: border-box;
+  background-color: rgb(240, 240, 240);
+  border-radius: 7px 7px 0 0;
+  border-color: var.$border-color;
+  border-style: solid;
+  border-width: 1px;
+  min-height: 200px;
+  margin-bottom: 7.5px;
+  width: 800px;
+}
 .post-descript {
+  position: relative;
+  margin-left: 10px;
+  h4 {
+    font-family: 'Yantramanav', sans-serif, Regular 400;
+    font-size: 20px;
+    margin: 5px;
+  }
+  #message {
     position: relative;
-    margin-left: 10px;
-    h4 {
-        font-family: 'Yantramanav', sans-serif, Regular 400;
-        font-size: 20px;
-        margin: 5px;
-    }
-    #message {
-        position: relative;
-        top: -15px;
-        font-size: 14px;
-        font-family: 'Roboto Flex', sans-serif, Light 300;
-        padding: auto;
-        margin-left: 5px;
-        margin-right: 10px;
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-line-clamp: 18;
-        -webkit-box-orient: vertical;
-    }
-    #message::after {
-        content: "";
-        position: absolute;
-        top: 280px;
-        left: -5px;
-        margin: 0;
-        padding: 0;
-        height: 100px;
-        width: 105%;
-        background: linear-gradient(rgba(0,0,0,0), rgb(255, 255, 255));
-    }
+    top: -15px;
+    font-size: 14px;
+    font-family: 'Roboto Flex', sans-serif, Light 300;
+    padding: auto;
+    margin-left: 5px;
+    margin-right: 10px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 18;
+    -webkit-box-orient: vertical;
+  }
+  #message::after {
+    content: '';
+    position: absolute;
+    top: 280px;
+    left: -5px;
+    margin: 0;
+    padding: 0;
+    height: 100px;
+    width: 105%;
+    background: linear-gradient(rgba(0, 0, 0, 0), rgb(255, 255, 255));
+  }
 }
 
 #post_header {
-    display: flex;
-    flex-flow: row;
-    margin-left: 45px;
+  display: flex;
+  flex-flow: row;
+  margin-left: 45px;
+  position: relative;
+  left: -6.5%;
+  align-items: center;
+  text-align: center;
+  img {
+    margin-right: 1%;
+    height: 30px;
+    width: 30px;
+  }
+  a {
+    text-decoration: none;
+  }
+  p {
+    font-size: 14px;
+    font-family: 'Raleway', sans-serif, Thin 100;
+    color: rgb(106, 106, 106);
+    margin-right: 15px;
+  }
+  #dot {
+    display: inline-flex;
+    background-color: rgb(106, 106, 106);
+    height: 3px;
+    width: 3px;
+    border-radius: 50%;
     position: relative;
-    left: -6.5%;
-    align-items: center;
-    text-align: center;
-    img {
-        margin-right: 1%;
-        height: 30px;
-        width: 30px;
-    }
-    a {
-        text-decoration: none;
-    }
-    p {
-        font-size: 14px;
-        font-family: 'Raleway', sans-serif, Thin 100;
-        color: rgb(106, 106, 106);
-        margin-right: 15px;
-    }
-    #dot {
-        display: inline-flex;
-        background-color: rgb(106, 106, 106);
-        height: 3px;
-        width: 3px;
-        border-radius: 50%;
-        position: relative;
-        left: -1.5%;
-    }
+    left: -1.5%;
+  }
+}
+
+#main-post-header {
+  display: flex;
+  flex-flow: row;
+  margin-left: 45px;
+  position: relative;
+  left: -5%;
+  align-items: center;
+  text-align: center;
+
+  a {
+    text-decoration: none;
+  }
+  img {
+    margin-right: 1%;
+    height: 30px;
+    width: 30px;
+  }
+  p {
+    font-size: 14px;
+    font-family: 'Raleway', sans-serif, Thin 100;
+    color: rgb(106, 106, 106);
+    margin-right: 15px;
+  }
+  #dot {
+    display: inline-flex;
+    background-color: rgb(106, 106, 106);
+    height: 3px;
+    width: 3px;
+    border-radius: 50%;
+    position: relative;
+    left: -1.5%;
+  }
 }

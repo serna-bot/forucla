@@ -11,19 +11,21 @@ import { handleTime } from '../../shared/handleTime';
 
 import * as api from '../../api/index.js';
 
-function IndivPosts(props) {
+function IndivPosts({ post, styling }) {
   let navigate = useNavigate();
-  let timeString = handleTime(props.createdAt);
+  let timeString = handleTime(post.createdAt);
 
   const openPost = () => {
-    navigate(`/posts/${props._id}`);
+    navigate(`/posts/${post._id}`);
   };
 
-  const user = sessionStorage.getItem('username');
-  const likeCount = props.upvoteCount.length - props.downvoteCount.length;
+  const postPage = styling === 'postPage';
 
-  let [isUpvoted, setIsUpvoted] = useState(props.upvoteCount.includes(user));
-  let [isDownvoted, setIsDownvoted] = useState(props.downvoteCount.includes(user));
+  const user = sessionStorage.getItem('username');
+  const likeCount = post.upvoteCount.length - post.downvoteCount.length;
+
+  let [isUpvoted, setIsUpvoted] = useState(post.upvoteCount.includes(user));
+  let [isDownvoted, setIsDownvoted] = useState(post.downvoteCount.includes(user));
   let [count, setCount] = useState(likeCount);
 
   // useEffect(() => {
@@ -37,12 +39,12 @@ function IndivPosts(props) {
     }
 
     try {
-      const { data } = await api.upvotePost(user, props._id);
+      const { data } = await api.upvotePost(user, post._id);
       console.log('Upvote Clicked!');
       setIsUpvoted(!isUpvoted);
       if (isDownvoted) setIsDownvoted(false);
       setCount(data.upvoteCount.length - data.downvoteCount.length);
-      console.log(props.upvoteCount);
+      console.log(post.upvoteCount);
     } catch (error) {
       console.log(error.message);
     }
@@ -54,7 +56,7 @@ function IndivPosts(props) {
     }
 
     try {
-      const { data } = await api.downvotePost(user, props._id);
+      const { data } = await api.downvotePost(user, post._id);
       console.log('Downvote Clicked!');
       setIsDownvoted(!isDownvoted);
       if (isUpvoted) setIsUpvoted(false);
@@ -66,7 +68,7 @@ function IndivPosts(props) {
 
   return (
     <div>
-      <div className='post-updown-container'>
+      <div className={postPage ? 'whole-main-post-container' : 'post-updown-container'}>
         <div className='up-down-buttons'>
           <button onClick={handleUpvote}>
             <img src={isUpvoted ? upvoteclicked : upvote} alt=''></img>
@@ -80,17 +82,17 @@ function IndivPosts(props) {
             <img src={isDownvoted ? downvoteclicked : downvote} alt=''></img>
           </button>
         </div>
-        <div className='post-indiv-container'>
+        <div className={postPage ? 'post-page-container' : 'post-indiv-container'}>
           <div>
             <div className='title-text-container' onClick={openPost}>
-              <div id='post_header'>
-                <img src={getLogo(props.channel)} alt='logo'></img>
-                <p id='channel'> {props.channel}</p> <span id='dot'></span> <p> Posted by: {props.creator} </p> <span id='dot'></span> <p> {timeString} </p>
+              <div id={postPage ? 'main-post-header' : 'post_header'}>
+                <img src={getLogo(post.channel)} alt='logo'></img>
+                <p id='channel'> {post.channel}</p> <span id='dot'></span> <p> Posted by: {post.creator} </p> <span id='dot'></span> <p> {timeString} </p>
               </div>
               <div className='post-descript'>
-                <h4>{props.title}</h4>
+                <h4>{post.title}</h4>
                 <div id='message'>
-                  <p> {props.message}</p>
+                  <p> {post.message}</p>
                 </div>
               </div>
             </div>

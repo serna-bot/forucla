@@ -124,19 +124,8 @@ function Posts() {
             if (posts === undefined) return <h1>Loading.</h1>;
             else if (posts.length === 0) return <h1>No posts.</h1>;
             else
-              return posts.map(function (currVal) {
-                return (
-                  <IndivPosts
-                    _id={currVal._id}
-                    title={currVal.title}
-                    message={currVal.message}
-                    channel={currVal.channel}
-                    creator={currVal.creator}
-                    createdAt={currVal.createdAt}
-                    upvoteCount={currVal.upvoteCount}
-                    downvoteCount={currVal.downvoteCount}
-                  />
-                );
+              return posts.map((post) => {
+                return <IndivPosts post={post} />;
               });
           })()}
         </div>

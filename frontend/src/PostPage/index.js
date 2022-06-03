@@ -20,40 +20,7 @@ const Post = () => {
   const { id } = useParams();
   const [post, setPost] = useState();
   let timeString;
-  let [dvImg, setDvImg] = useState(downvote);
-  let [upImg, setUpImg] = useState(upvote);
-  let [upCount, setUpCount] = useState(1);
 
-  //awiat and get the upvote count
-  const handleUpvote = () => {
-    if (dvImg === downvoteclicked) {
-      setUpCount(++upCount);
-      console.log('removing downvote', upCount);
-      setDvImg(downvote);
-    }
-    if (upImg === upvote) {
-      setUpCount(++upCount);
-      console.log('upvoting', upCount);
-      setUpImg(upvoteclicked);
-    } else {
-      setUpCount(--upCount);
-      setUpImg(upvote);
-    }
-  };
-
-  const handleDownvote = () => {
-    if (upImg === upvoteclicked) {
-      setUpCount(--upCount);
-      setUpImg(upvote);
-    }
-    if (dvImg === downvote) {
-      setUpCount(--upCount);
-      setDvImg(downvoteclicked);
-    } else {
-      setUpCount(++upCount);
-      setDvImg(downvote);
-    }
-  };
   useEffect(() => {
     const getPost = async () => {
       try {
@@ -76,37 +43,7 @@ const Post = () => {
     <div>
       <Header />
       <div className='post-comments-container'>
-        <div className='whole-main-post-container'>
-          <div className='up-down-buttons'>
-            <button onClick={handleUpvote}>
-              <img src={upImg}></img>
-            </button>
-            {(() => {
-              if (upImg === upvoteclicked) return <p id='upvoted-text'>{upCount}</p>;
-              else if (dvImg === downvoteclicked) return <p id='downvoted-text'>{upCount}</p>;
-              else return <p>{upCount}</p>;
-            })()}
-            <button onClick={handleDownvote}>
-              <img src={dvImg}></img>
-            </button>
-          </div>
-          <div className='main-post-container'>
-            <div>
-              <div>
-                <div id='main-post-header'>
-                  <img src={getLogo(post.channel)} alt='logo'></img>
-                  <p id='channel'> {post.channel}</p> <span id='dot'></span> <p> Posted by: {post.creator} </p> <span id='dot'></span> <p> {timeString} </p>
-                </div>
-                <div className='post-text'>
-                  <h4>{post.title}</h4>
-                  <div id='message'>
-                    <p> {post.message}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <IndivPosts post={post} styling='postPage' />
         <CommentSection post={post} />
       </div>
     </div>

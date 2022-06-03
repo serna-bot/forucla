@@ -1,144 +1,144 @@
-@use "../var.scss" as var;
+@use '../var.scss' as var;
 
 .post-comments-container {
-    display: flex;
-    flex-flow: column;
-    box-sizing: border-box;
-    background-color: rgb(240, 240, 240);
-    border-radius: 7px;
-    width: 800px;
-    margin-top: 75px;
-    margin-left: 22%;
+  display: flex;
+  flex-flow: column;
+  box-sizing: border-box;
+  background-color: rgb(240, 240, 240);
+  border-radius: 7px;
+  width: 800px;
+  margin-top: 75px;
+  margin-left: 22%;
 }
 
 #submit-comment {
-    display: flex;
-    flex-flow: column;
-    height: 100px;
-    width: 98.3%;
-    border-style: solid;
-    border-radius: 4px;
-    border-color: var.$border-color;
-    background-color: white;
-    margin-left: 5px;
-    margin-bottom: 5px;
+  display: flex;
+  flex-flow: column;
+  height: 100px;
+  width: 98.3%;
+  border-style: solid;
+  border-radius: 4px;
+  border-color: var.$border-color;
+  background-color: white;
+  margin-left: 5px;
+  margin-bottom: 5px;
 
-    textarea {
-        width: 98%;
-        height: 80px;
-        resize: none;
-        margin-bottom: 5px;
-        border-radius: 4px;
-        border: none;
-        margin-top: 5px;
-        margin-left: 5px;
-        font-family: "Avenir";
-        font-size: 13px;
-    }
-    textarea:focus {
-        outline: none !important;
-        border:1px solid var.$accent-blue;
-        box-shadow: 0 0 10px var.$accent-blue;
-    }
-    button {
-        position: relative;
-        width: 100px;
-        height: 35px;
-        left: 86.3%;
-        margin-bottom: 5px;
-        border: none;
-        text-align: center;
-        font-family: "Avenir";
-        font-size: 14;
-        border-radius: 25px;
-        transition-duration: 0.4s;
-        cursor: pointer;
-    }
-    button:hover {
-        background-color: var.$main-blue; /* Green */
-        color: white;
-    }
+  textarea {
+    width: 98%;
+    height: 80px;
+    resize: none;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    border: none;
+    margin-top: 5px;
+    margin-left: 5px;
+    font-family: 'Avenir';
+    font-size: 13px;
+  }
+  textarea:focus {
+    outline: none !important;
+    border: 1px solid var.$accent-blue;
+    box-shadow: 0 0 10px var.$accent-blue;
+  }
+  button {
+    position: relative;
+    width: 100px;
+    height: 35px;
+    left: 86.3%;
+    margin-bottom: 5px;
+    border: none;
+    text-align: center;
+    font-family: 'Avenir';
+    font-size: 14;
+    border-radius: 25px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: var.$main-blue; /* Green */
+    color: white;
+  }
 }
 
 #comment-container {
-    display: block;
+  display: block;
 }
 
 .whole-main-post-container {
-    display: flex;
-    flex-flow: row;
-    box-sizing: border-box;
-    background-color: rgb(240, 240, 240);
-    border-radius: 7px 7px 0 0;
-    border-color: var.$border-color;
-    border-style: solid;
-    border-width: 1px;
-    min-height: 200px;
-    margin-bottom: 7.5px;
-    width: 800px;
+  display: flex;
+  flex-flow: row;
+  box-sizing: border-box;
+  background-color: rgb(240, 240, 240);
+  border-radius: 7px 7px 0 0;
+  border-color: var.$border-color;
+  border-style: solid;
+  border-width: 1px;
+  min-height: 200px;
+  margin-bottom: 7.5px;
+  width: 800px;
 }
 
 .main-post-container {
-    display: flex;
-    flex-flow: column;
-    width: 760px;
-    border-radius: 0 7px 7px 0;
-    border-left: 1px solid var.$border-color ;
-    box-sizing: border-box;
-    background-color: white;
-    font-family: "Avenir"; 
-    overflow: hidden;
+  display: flex;
+  flex-flow: column;
+  width: 760px;
+  border-radius: 0 7px 7px 0;
+  border-left: 1px solid var.$border-color;
+  box-sizing: border-box;
+  background-color: white;
+  font-family: 'Avenir';
+  overflow: hidden;
 }
 
 .post-text {
+  position: relative;
+  margin-left: 10px;
+  h4 {
+    font-family: 'Yantramanav', sans-serif, Regular 400;
+    font-size: 20px;
+    margin: 5px;
+  }
+  #message {
     position: relative;
-    margin-left: 10px;
-    h4 {
-        font-family: 'Yantramanav', sans-serif, Regular 400;
-        font-size: 20px;
-        margin: 5px;
-    }
-    #message {
-        position: relative;
-        top: -8px;
-        font-size: 14px;
-        font-family: 'Roboto Flex', sans-serif, Light 300;
-        padding: auto;
-        margin-left: 5px;
-        margin-right: 10px;
-    }
+    top: -8px;
+    font-size: 14px;
+    font-family: 'Roboto Flex', sans-serif, Light 300;
+    padding: auto;
+    margin-left: 5px;
+    margin-right: 10px;
+  }
 }
 
 #main-post-header {
-    display: flex;
-    flex-flow: row;
-    margin-left: 45px;
-    position: relative;
-    left: -5%;
-    align-items: center;
-    text-align: center;
+  display: flex;
+  flex-flow: row;
+  margin-left: 45px;
+  position: relative;
+  left: -5%;
+  align-items: center;
+  text-align: center;
 
-    a {
-        text-decoration: none;
-    }
-    img {
-        margin-right: 1%;
-        height: 30px;
-        width: 30px;
-    }
-    p {
-        font-size: 14px;
-        font-family: 'Raleway', sans-serif, Thin 100;
-        color: rgb(106, 106, 106);
-        margin-right: 15px;
-    }
-    #dot {
-        display: inline-flex;
-        background-color: rgb(106, 106, 106);
-        height: 3px;
-        width: 3px;
-        border-radius: 50%;
-        position: relative;
-        left: -1.5%;
-    }
+  a {
+    text-decoration: none;
+  }
+  img {
+    margin-right: 1%;
+    height: 30px;
+    width: 30px;
+  }
+  p {
+    font-size: 14px;
+    font-family: 'Raleway', sans-serif, Thin 100;
+    color: rgb(106, 106, 106);
+    margin-right: 15px;
+  }
+  #dot {
+    display: inline-flex;
+    background-color: rgb(106, 106, 106);
+    height: 3px;
+    width: 3px;
+    border-radius: 50%;
+    position: relative;
+    left: -1.5%;
+  }
 }
