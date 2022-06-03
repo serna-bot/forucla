@@ -5,14 +5,13 @@ const postSchema = mongoose.Schema({
   message: String,
   creator: String,
   channel: String,
-  selectedFile: String,
   upvoteCount: {
-    type: Number,
-    default: 0,
+    type: [String],
+    default: [],
   },
   downvoteCount: {
-    type: Number,
-    default: 0,
+    type: [String],
+    default: [],
   },
   comments: { type: [String], default: [] },
   createdAt: {

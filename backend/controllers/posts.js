@@ -34,22 +34,56 @@ export const createPost = async (req, res) => {
 
 export const upvotePost = async (req, res) => {
   const { id } = req.params;
-  if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('Invalid post id');
+  const { user } = req.body;
+
+  if (user === '') {
+    return res.json({ message: 'Unauthenticated' });
+  }
+
+  if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
 
   const post = await PostMessage.findById(id);
-  const updatedPost = await PostMessage.findByIdAndUpdate(id, { upvoteCount: post.upvoteCount + 1 }, { new: true });
 
-  res.json(updatedPost);
+  const upvoteIndex = post.upvoteCount.findIndex((id) => id === user);
+  const downvoteIndex = post.downvoteCount.findIndex((id) => id === user);
+
+  if (upvoteIndex === -1) {
+    post.upvoteCount.push(user);
+    if (downvoteIndex !== -1) {
+      post.downvoteCount = post.downvoteCount.filter((id) => id !== user);
+    }
+  } else {
+    post.upvoteCount = post.upvoteCount.filter((id) => id !== user);
+  }
+  const updatedPost = await PostMessage.findByIdAndUpdate(id, post, { new: true });
+  res.status(200).json(updatedPost);
 };
 
 export const downvotePost = async (req, res) => {
   const { id } = req.params;
-  if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('Invalid post id');
+  const { user } = req.body;
+
+  if (user === '') {
+    return res.json({ message: 'Unauthenticated' });
+  }
+
+  if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
 
   const post = await PostMessage.findById(id);
-  const updatedPost = await PostMessage.findByIdAndUpdate(id, { downvoteCount: post.downvoteCount + 1 }, { new: true });
 
-  res.json(updatedPost);
+  const upvoteIndex = post.upvoteCount.findIndex((id) => id === user);
+  const downvoteIndex = post.downvoteCount.findIndex((id) => id === user);
+
+  if (downvoteIndex === -1) {
+    post.downvoteCount.push(user);
+    if (upvoteIndex !== -1) {
+      post.upvoteCount = post.upvoteCount.filter((id) => id !== user);
+    }
+  } else {
+    post.downvoteCount = post.downvoteCount.filter((id) => id !== user);
+  }
+  const updatedPost = await PostMessage.findByIdAndUpdate(id, post, { new: true });
+  res.status(200).json(updatedPost);
 };
 
 export const commentPost = async (req, res) => {

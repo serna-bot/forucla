@@ -4,7 +4,7 @@ import IndivPosts from './IndivPosts';
 import * as api from '../api/index.js';
 import Header from '../shared/Header';
 import Channels from './Channels';
-import Filters from './Filters'
+import Filters from './Filters';
 import uclabanner from '../assets/uclabanner.png';
 import banner2 from '../assets/banner2.png';
 import TopChannels from './TopChannels';
@@ -21,13 +21,13 @@ function checkIfDateInRange(timeOfPost, currTime, range) {
   return false;
 }
 
-function submitChange () {
-  sessionStorage.removeItem("searchChannel");
-  sessionStorage.removeItem("searchTitle");
-  sessionStorage.removeItem("searchTime");
-  sessionStorage.removeItem("channels");
+function submitChange() {
+  sessionStorage.removeItem('searchChannel');
+  sessionStorage.removeItem('searchTitle');
+  sessionStorage.removeItem('searchTime');
+  sessionStorage.removeItem('channels');
   window.location.href = `http://localhost:3000/submit`;
-};
+}
 
 function Posts() {
   let [posts, setPosts] = useState(undefined);
@@ -90,7 +90,7 @@ function Posts() {
           }
         }
       }
-      
+
       setPosts(searchRes);
     } catch (error) {
       console.log(error.message);
@@ -102,33 +102,46 @@ function Posts() {
       getPosts();
     }
   }, [posts]);
-  
+
   return (
     <div>
       <Header />
       <div className='Posts'>
         <div className='SidebarRight'>
           <img src={uclabanner} alt='banner'></img>
-          <button id='submit_button' onClick={submitChange}>Submit a post!</button>
-          <Channels/>
-          <TopChannels/>
+          <button id='submit_button' onClick={submitChange}>
+            Submit a post!
+          </button>
+          <Channels />
+          <TopChannels />
         </div>
         <div className='SidebarLeft'>
-          <img src={banner2} alt="banner" id='cropped'></img>
-          <Calender/>
+          <img src={banner2} alt='banner' id='cropped'></img>
+          <Calender />
         </div>
-          <div id='indiv-posts'>
+        <div id='indiv-posts'>
           {(() => {
             if (posts === undefined) return <h1>Loading.</h1>;
             else if (posts.length === 0) return <h1>No posts.</h1>;
             else
               return posts.map(function (currVal) {
-                return <IndivPosts _id={currVal._id} title={currVal.title} message={currVal.message} channel={currVal.channel} creator={currVal.creator} createdAt={currVal.createdAt} />;
+                return (
+                  <IndivPosts
+                    _id={currVal._id}
+                    title={currVal.title}
+                    message={currVal.message}
+                    channel={currVal.channel}
+                    creator={currVal.creator}
+                    createdAt={currVal.createdAt}
+                    upvoteCount={currVal.upvoteCount}
+                    downvoteCount={currVal.downvoteCount}
+                  />
+                );
               });
           })()}
         </div>
       </div>
-      <Filters/>
+      <Filters />
     </div>
   );
 }

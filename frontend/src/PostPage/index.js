@@ -13,8 +13,8 @@ import upvoteclicked from '../assets/upvoteclicked.png';
 
 import { getLogo } from '../shared/getLogo.js';
 import { handleTime } from '../shared/handleTime.js';
-
 import CommentSection from './CommentSection';
+import IndivPosts from '../Posts/IndivPosts';
 
 const Post = () => {
   const { id } = useParams();
@@ -23,6 +23,7 @@ const Post = () => {
   let [dvImg, setDvImg] = useState(downvote);
   let [upImg, setUpImg] = useState(upvote);
   let [upCount, setUpCount] = useState(1);
+
   //awiat and get the upvote count
   const handleUpvote = () => {
     if (dvImg === downvoteclicked) {
