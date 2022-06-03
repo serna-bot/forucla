@@ -75,9 +75,9 @@ function Homepage() {
   };
 
   const Route = () => {
-    useEffect(() => {
+    setTimeout(() => {
       window.location.href = `http://localhost:3000/posts`;
-    });
+    }, 500);
 
     return <div></div>;
   };
