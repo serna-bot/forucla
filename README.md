@@ -22,14 +22,17 @@ ForUCLA is a web application that aims to connect bruins to UCLA. We provide a l
 In order to run this application locally, you will first need to download or clone a copy of this repository.
 
 ### Backend:
-Create a file named "googlesso.json" under the backend folder, and add the following into that file:
+Note that you need to obtain a Google OAuth key using your UCLA email in order for the login to function. You can obtain a key here: 
+https://console.cloud.google.com/apis/dashboard
 
-```
-{
-    "clientId": "insert clientId",
-    "clientSecret": "insert clientSecret"
-}
-```
+Ensure that you enable the People API and that the OAuth Consent Screen, User Type is set to internal.
+
+Create a new project and create a credential with
+http://localhost:3000, http://localhost, http://localhost:4000 in the Authorized JavaScript origins.
+
+Under Authorized redirect URIs, include the following:
+http://localhost:4000/handleGoogleRedirect, http://localhost:3000/handleGoogleRedirect, http://localhost:4000/login, http://localhost:3000/login
+
 
 Make sure you have MongoDB downloaded and running, then type the following into your terminal to start the backend:
 
@@ -55,6 +58,13 @@ npm install
 npm start
 ```
 The app should be running now
+
+### Data:
+To populate the database, you can use the following shell script:
+```
+cd backend
+./dbposts.sh
+```
 
 ## Authors:
 This project was created by Serena Ong, Brandon Yan, Kenneth Park, Ishita Ghosh, and Soohyun Mun for a project for CS 35L taught by Professor Paul Eggert in Spring 2022 at UCLA.
