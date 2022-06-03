@@ -9,32 +9,32 @@ import * as api from '../api/index.js';
 const dropStyling = {
   control: (base, state) => ({
     ...base,
-    fontFamily: "Avenir",
+    fontFamily: 'Avenir',
     fontSize: 14,
-    cursor: "text",
+    cursor: 'text',
   }),
 
   option: (styles) => {
-    return{
+    return {
       ...styles,
       height: 31,
-      cursor: "pointer",
-      fontFamily: "Avenir",
-    }
+      cursor: 'pointer',
+      fontFamily: 'Avenir',
+    };
   },
 
-  input: styles => ({
+  input: (styles) => ({
     ...styles,
-    color: "black",
-    fontFamily: "Avenir",
+    color: 'black',
+    fontFamily: 'Avenir',
   }),
 
-  menu: styles => ({
+  menu: (styles) => ({
     ...styles,
-    position: "absolute",
-    top: "20px",
+    position: 'absolute',
+    top: '20px',
   }),
-}
+};
 
 function Submit() {
   const [title, setTitle] = useState();
@@ -52,6 +52,11 @@ function Submit() {
     if (sessionStorage.getItem('anonMode') === 'true') {
       username = 'Anonymous';
     }
+
+    if (!title || !message || !chosenChannel) {
+      return;
+    }
+
     const post = {
       title: title,
       message: message,
@@ -77,19 +82,12 @@ function Submit() {
         <form>
           <div id='title'>
             <label htmlFor='title-input'>Title:</label>
-            <input type='text' name='title' id='title-input' placeholder='Write a title...' onChange={(e) => setTitle(e.target.value)}/>
+            <input type='text' name='title' id='title-input' placeholder='Write a title...' onChange={(e) => setTitle(e.target.value)} />
           </div>
           <div id='description'>
             <textarea rows='10' name='description' id='description-input' placeholder='Write a message...' onChange={(e) => setMessage(e.target.value)}></textarea>
           </div>
-          <Select
-            options={channels}
-            openMenuOnClick={false}
-            maxMenuHeight={100}
-            styles={dropStyling} 
-            placeholder='You Must Choose a Channel'
-            onChange={handleDropdownChange}
-          />
+          <Select options={channels} openMenuOnClick={false} maxMenuHeight={100} styles={dropStyling} placeholder='You Must Choose a Channel' onChange={handleDropdownChange} />
         </form>
         <div>
           {sessionStorage['username'] ? (
