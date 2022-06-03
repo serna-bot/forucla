@@ -5,7 +5,7 @@ import speech_bubble from "../../assets/speech_bubble.png"
 
 const CommentSection = ({ post }) => {
   console.log(post);
-  const [comments, setComments] = useState(post?.comments);
+  const [comments, setComments] = useState(post?.comments.reverse());
   const [comment, setComment] = useState('');
   const user = sessionStorage.getItem('username');
   let submitStringPlaceholder = "Submit a comment"
@@ -36,7 +36,7 @@ const CommentSection = ({ post }) => {
         }
       </div>
       <div id='comment-container'>
-        {comments.map((c, i) => (
+        {comments.reverse().map((c, i) => (
           <div id='comment'>
             <img src={speech_bubble} alt="speech_bubble"></img>
             <p key={i}>{c}</p>

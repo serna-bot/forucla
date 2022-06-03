@@ -135,8 +135,25 @@
         font-size: 16px;
         font-family: "Avenir";
         border: none;
+        
+        #pic-user {
+            display: flex;
+            flex-flow: row;
+            position: relative;
+            top: 2.2%;
+            align-items: center;
+        }
+        #anon-pic {
+            align-items: center;
+            position: relative;
+            border-radius: 50%;
+            top: -10%;
+            left: -8%;
+            width: 40px;
+            height: 40px;
+        }
 
-        img {
+        #user-pic {
             float: left;
             align-items: center;
             border-radius: 50%;
@@ -187,4 +204,64 @@
     .dropdown:hover .dropdown-content {display: block;}
     
     .dropdown:hover .dropbtn {background-color: var.$main-yellow;}
+
+    .anon-dropbtn {
+        display: flex;
+        flex-flow: row;
+        height: 50px;
+        position: relative;
+        top: 10%;
+        align-items: center;
+        width: 160px;
+        text-align: center;
+        background-color: grey;
+        border-radius: 25px;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        font-family: "Avenir";
+        border: none;
+        
+        #pic-user {
+            display: flex;
+            flex-flow: row;
+            position: relative;
+            top: 2.2%;
+            align-items: center;
+        }
+        #anon-pic {
+            align-items: center;
+            position: relative;
+            border-radius: 50%;
+            top: -10%;
+            left: -8%;
+            width: 40px;
+            height: 40px;
+        }
+
+        #user-pic {
+            float: left;
+            align-items: center;
+            border-radius: 50%;
+            display: block;
+            position: relative;
+            top: -5%;
+            left: -8%;
+            width: 40px;
+            height: 40px;
+        }
+
+        p {
+            font-family: 'Barlow Condensed', sans-serif;
+            position: relative;
+            top: -9%;
+        }
+    }
+    
+    .dropdown:hover .anon-dropbtn {
+        background-color: rgb(56, 56, 56);
+        img {
+            filter: invert(1);
+        }
+    }
 }

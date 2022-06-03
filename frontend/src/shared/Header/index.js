@@ -3,6 +3,7 @@ import Search from "./Search/";
 // import {login} from "../../Homepage/index.js"
 // import {logOut} from "../../Homepage/index.js"
 import bear_homepage from "../../assets/bear_homepage.png"
+import anon_profile from "../../assets/anon_profile.png"
 import { useEffect, useState } from "react";
 
 function signOut() {
@@ -40,6 +41,12 @@ function Header() {
         sessionStorage.setItem("anonMode", !currAnon);
         console.log(currAnon);
     }
+    function anonModeStyling() {
+        if (anonMode) {
+            return "anon-dropbtn";
+        }
+        return "dropbtn"
+    }
     return (
     <div className="header_styling">
         <div id="logo" onClick={goHome}> 
@@ -60,11 +67,17 @@ function Header() {
                                     </label>
                                 </div>
                                 <div className="dropdown">
-                                    <button className="dropbtn"> 
-                                    <img src={sessionStorage.getItem("profilePic")} alt="profPic"></img>
+                                    <button className={anonModeStyling()}> 
+                                    
                                     {anonMode ?
-                                    <p>AnonMode</p>
-                                    : <p>{username}</p>
+                                    <div id="pic-user">
+                                        <img src={anon_profile} alt="profPic" id="anon-pic"></img>
+                                        <p>Anonymous</p>
+                                    </div>
+                                    : <div id="pic-user">
+                                        <img src={sessionStorage.getItem("profilePic")} alt="profPic" id="user-pic"></img>
+                                        <p>{username}</p>
+                                    </div>
                                     }</button>
                                     <div className="dropdown-content">
                                         <button onClick={signOut}> Logout</button>
